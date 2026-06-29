@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>大工日本語 — Daiku Japanese (Nepali)</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Sans+Devanagari:wght@400;600;700&family=Bebas+Neue&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1a1209;--paper:#f5f0e8;--wood:#8B5E3C;--wl:#C4956A;--wd:#4A2E0A;
+  --steel:#2D3748;--acc:#D4410B;--gold:#C9962A;--ok:#2D7D3A;--bad:#C0392B;
+  --white:#FDFAF4;--soft:#e8e0d0;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);min-height:100vh;font-size:16px;}
+
+/* HEADER */
+header{background:var(--wd);position:sticky;top:0;z-index:100;box-shadow:0 4px 20px rgba(0,0,0,.4);}
+.hi{display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem;max-width:1300px;margin:0 auto;flex-wrap:wrap;gap:0;}
+.logo{font-family:'Bebas Neue',sans-serif;font-size:1.9rem;color:var(--wl);letter-spacing:3px;padding:.8rem 0;line-height:1.1;}
+.logo span{color:var(--acc);}
+.logo small{font-size:.58rem;color:rgba(196,149,106,.5);letter-spacing:2px;display:block;font-family:'DM Sans',sans-serif;}
+nav{display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+nav button{font-family:'DM Sans',sans-serif;font-weight:700;font-size:.68rem;letter-spacing:.5px;padding:.85rem .95rem;border:none;background:transparent;color:rgba(196,149,106,.5);cursor:pointer;border-bottom:3px solid transparent;transition:all .2s;white-space:nowrap;}
+nav button:hover{color:var(--wl);}
+nav button.active{color:var(--wl);border-bottom-color:var(--acc);background:rgba(212,65,11,.1);}
+
+main{max-width:1300px;margin:0 auto;padding:1.5rem;}
+.sec{display:none;}.sec.active{display:block;}
+
+/* PAGE TITLES */
+.stitle{font-family:'Bebas Neue',sans-serif;font-size:2.4rem;letter-spacing:3px;color:var(--wd);line-height:1;margin-bottom:.3rem;}
+.stitle span{color:var(--acc);}
+.ssub{font-size:.85rem;color:var(--wood);margin-bottom:1.5rem;padding-bottom:.9rem;border-bottom:2px solid var(--wl);}
+
+/* INTRO BOX */
+.intro-box{background:var(--white);border:2px solid var(--gold);border-radius:4px;padding:1.2rem 1.5rem;margin-bottom:1.5rem;font-size:.9rem;line-height:1.7;color:var(--steel);}
+.intro-box strong{color:var(--wd);font-size:1rem;}
+.intro-box .jp-big{font-family:'Noto Sans JP',sans-serif;font-size:1.4rem;font-weight:900;color:var(--acc);display:block;margin:.4rem 0;}
+.ne{font-family:'Noto Sans Devanagari',sans-serif;}
+
+/* TOOL CARDS */
+.tool-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;margin-bottom:2rem;}
+.tool-card{background:var(--white);border:2px solid var(--wl);border-radius:4px;overflow:hidden;box-shadow:3px 3px 0 var(--wl);cursor:pointer;transition:transform .15s,box-shadow .15s;position:relative;}
+.tool-card:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--wl);}
+.tool-card.flipped .tc-front{display:none;}
+.tool-card.flipped .tc-back{display:flex;}
+.tc-front,.tc-back{width:100%;}
+.tc-back{display:none;flex-direction:column;align-items:center;justify-content:center;padding:1.2rem;text-align:center;min-height:200px;background:var(--wd);}
+.tc-img{width:100%;height:160px;object-fit:cover;background:#ddd;}
+.tc-img-placeholder{width:100%;height:160px;background:linear-gradient(135deg,var(--soft),var(--wl));display:flex;align-items:center;justify-content:center;font-size:3rem;}
+.tc-body{padding:.8rem;}
+.tc-jp{font-family:'Noto Sans JP',sans-serif;font-size:1.2rem;font-weight:900;color:var(--wd);}
+.tc-roma{font-size:.7rem;color:var(--wood);margin:2px 0;}
+.tc-en{font-size:.82rem;color:var(--steel);margin-top:2px;font-weight:600;}
+.tc-ne{font-family:'Noto Sans Devanagari',sans-serif;font-size:.82rem;color:var(--wood);margin-top:2px;}
+.tc-use{font-size:.72rem;color:var(--wood);margin-top:4px;font-style:italic;}
+.tc-flip-hint{position:absolute;bottom:.4rem;right:.6rem;font-size:.55rem;color:rgba(139,94,60,.4);letter-spacing:1px;}
+.tcb-jp{font-family:'Noto Sans JP',sans-serif;font-size:2rem;font-weight:900;color:var(--wl);margin-bottom:.3rem;}
+.tcb-roma{font-size:.75rem;color:rgba(196,149,106,.7);margin-bottom:.5rem;}
+.tcb-en{font-size:1rem;font-weight:700;color:white;margin-bottom:.2rem;}
+.tcb-ne{font-family:'Noto Sans Devanagari',sans-serif;font-size:.95rem;color:rgba(255,255,255,.85);margin-bottom:.3rem;}
+.tcb-use{font-size:.75rem;color:rgba(255,255,255,.7);line-height:1.5;}
+
+/* KANJI */
+.kanji-intro{background:var(--white);border-left:5px solid var(--acc);padding:1rem 1.3rem;margin-bottom:1.5rem;font-size:.88rem;line-height:1.7;color:var(--steel);}
+.kanji-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;margin-bottom:2rem;}
+.kanji-card{background:var(--white);border:2px solid var(--wl);border-radius:4px;padding:1.2rem;box-shadow:3px 3px 0 var(--wl);display:flex;gap:1.2rem;align-items:flex-start;}
+.kanji-char{font-family:'Noto Sans JP',sans-serif;font-size:3.5rem;font-weight:900;color:var(--wd);line-height:1;min-width:70px;text-align:center;}
+.kanji-info{flex:1;}
+.kanji-read{font-family:'Noto Sans JP',sans-serif;font-size:.95rem;color:var(--wood);margin-bottom:.2rem;}
+.kanji-en{font-size:.9rem;font-weight:700;color:var(--steel);margin-bottom:.2rem;}
+.kanji-ne{font-family:'Noto Sans Devanagari',sans-serif;font-size:.9rem;color:var(--wood);margin-bottom:.4rem;}
+.kanji-examples{display:flex;flex-direction:column;gap:.3rem;}
+.kanji-ex{font-size:.78rem;background:var(--soft);padding:.25rem .5rem;border-radius:2px;}
+.kanji-ex .kex-jp{font-family:'Noto Sans JP',sans-serif;font-weight:700;color:var(--wd);}
+.kanji-ex .kex-en{color:var(--steel);}
+.kanji-ex .kex-ne{font-family:'Noto Sans Devanagari',sans-serif;color:var(--wood);font-size:.75rem;}
+
+/* HIRAGANA */
+.hira-intro{background:rgba(212,65,11,.06);border-left:4px solid var(--acc);padding:1rem 1.3rem;margin-bottom:1.5rem;font-size:.85rem;line-height:1.7;}
+.hira-group{margin-bottom:1.5rem;}
+.hira-group-title{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:3px;color:var(--wd);margin-bottom:.7rem;display:flex;align-items:center;gap:.7rem;}
+.hira-group-title::after{content:'';flex:1;height:2px;background:linear-gradient(to right,var(--wl),transparent);}
+.hira-row{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:.5rem;}
+.hira-card{background:var(--white);border:2px solid var(--wl);width:68px;height:72px;display:flex;flex-direction:column;align-items:center;justify-content:center;border-radius:4px;cursor:pointer;transition:all .15s;box-shadow:2px 2px 0 var(--wl);}
+.hira-card:hover{transform:translateY(-2px);box-shadow:2px 4px 0 var(--wl);}
+.hira-card .hc{font-family:'Noto Sans JP',sans-serif;font-size:1.6rem;font-weight:700;color:var(--wd);}
+.hira-card .hr{font-size:.62rem;color:var(--wood);margin-top:2px;}
+.hira-card.voiced{border-color:var(--steel);}
+.hira-card.combo{border-color:var(--gold);width:84px;}
+
+/* VERB TABLES */
+.glabel{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:3px;color:var(--white);padding:.45rem 2.5rem .45rem 1.3rem;display:inline-block;margin:1.4rem 0 .7rem;clip-path:polygon(0 0,100% 0,97% 100%,0 100%);}
+.glabel.g1{background:var(--wood);}.glabel.g2{background:var(--steel);}.glabel.g3{background:var(--acc);}
+.gnote{font-size:.8rem;color:var(--steel);margin-bottom:.8rem;padding:.5rem .8rem;border-left:3px solid var(--wl);background:rgba(139,94,60,.06);line-height:1.6;}
+.twrap{overflow-x:auto;margin-bottom:1.8rem;}
+table{width:100%;border-collapse:collapse;font-size:.78rem;background:var(--white);box-shadow:4px 4px 0 var(--wl);}
+thead tr{background:var(--wd);color:var(--wl);}
+thead th{padding:.6rem .65rem;text-align:left;font-family:'DM Sans',sans-serif;font-weight:700;font-size:.62rem;letter-spacing:.5px;white-space:nowrap;}
+thead th:first-child{width:155px;}
+tbody tr{border-bottom:1px solid rgba(139,94,60,.14);}
+tbody tr:hover{background:rgba(139,94,60,.05);}
+tbody td{padding:.6rem .65rem;vertical-align:top;}
+.jp{font-family:'Noto Sans JP',sans-serif;font-size:.98rem;font-weight:700;color:var(--wd);}
+.roma{font-size:.66rem;color:var(--wood);}
+.nen{font-size:.72rem;color:var(--steel);margin-top:1px;font-weight:600;}
+.nne{font-family:'Noto Sans Devanagari',sans-serif;font-size:.68rem;color:var(--wood);margin-top:1px;}
+.fc{font-family:'Noto Sans JP',sans-serif;font-size:.82rem;color:var(--wd);}
+.fc .roma{display:block;margin-top:1px;}
+.hc{background:rgba(212,65,11,.07);}
+
+/* PARTICLES */
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:.9rem;margin-bottom:1.8rem;}
+.pcard{background:var(--white);border:2px solid var(--wl);border-radius:4px;padding:1.2rem;box-shadow:3px 3px 0 var(--wl);transition:transform .15s;}
+.pcard:hover{transform:translate(-2px,-2px);}
+.pbadge{font-family:'Noto Sans JP',sans-serif;font-size:2.2rem;font-weight:900;color:var(--acc);line-height:1;}
+.pname{font-size:.65rem;letter-spacing:1px;text-transform:uppercase;color:var(--wood);margin:.25rem 0;font-weight:700;}
+.prule{font-size:.8rem;color:var(--steel);line-height:1.6;border-top:1px solid rgba(139,94,60,.18);padding-top:.55rem;margin-top:.55rem;}
+.pex{font-family:'Noto Sans JP',sans-serif;font-size:.95rem;font-weight:700;color:var(--wd);margin-top:.55rem;}
+.proma{font-size:.65rem;color:var(--wood);margin-top:1px;}
+.pen{font-size:.78rem;color:var(--steel);margin-top:2px;font-weight:600;}
+.pne{font-family:'Noto Sans Devanagari',sans-serif;font-size:.76rem;color:var(--wood);font-style:italic;margin-top:1px;}
+
+/* PHRASES */
+.pcat{font-family:'Bebas Neue',sans-serif;font-size:1.15rem;letter-spacing:3px;color:var(--wd);margin:1.5rem 0 .7rem;display:flex;align-items:center;gap:.7rem;}
+.pcat::after{content:'';flex:1;height:2px;background:linear-gradient(to right,var(--wl),transparent);}
+.phgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:.75rem;margin-bottom:.9rem;}
+.phcard{background:var(--white);border-left:4px solid var(--wood);border-radius:0 4px 4px 0;padding:1rem 1.1rem;box-shadow:2px 2px 0 rgba(139,94,60,.18);}
+.phcard.s{border-left-color:var(--acc);}.phcard.t{border-left-color:var(--gold);}.phcard.r{border-left-color:var(--steel);}.phcard.p{border-left-color:var(--ok);}
+.phjp{font-family:'Noto Sans JP',sans-serif;font-size:1rem;font-weight:700;color:var(--wd);}
+.phroma{font-size:.65rem;color:var(--wood);margin:2px 0;}
+.phen{font-size:.82rem;color:var(--steel);margin-top:2px;font-weight:600;}
+.phne{font-family:'Noto Sans Devanagari',sans-serif;font-size:.8rem;color:var(--wood);margin-top:2px;}
+.gtag{display:inline-block;font-size:.58rem;background:var(--wd);color:var(--wl);padding:1px 6px;margin-top:4px;border-radius:2px;font-weight:700;}
+
+/* QUIZ */
+.qwrap{max-width:720px;margin:0 auto;}
+.qprog{display:flex;gap:3px;margin-bottom:1.8rem;}
+.qpip{flex:1;height:7px;background:rgba(139,94,60,.2);border-radius:2px;transition:background .3s;}
+.qpip.done{background:var(--ok);}.qpip.cur{background:var(--gold);}.qpip.bad{background:var(--bad);}
+.qcard{background:var(--white);border:2px solid var(--wl);border-radius:4px;padding:2rem;box-shadow:6px 6px 0 var(--wl);margin-bottom:1.3rem;min-height:180px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;}
+.qtype{position:absolute;top:.8rem;right:.9rem;font-size:.6rem;letter-spacing:1px;text-transform:uppercase;color:var(--wood);font-weight:700;background:var(--soft);padding:2px 6px;border-radius:2px;}
+.qqjp{font-family:'Noto Sans JP',sans-serif;font-size:2.2rem;font-weight:900;color:var(--wd);margin-bottom:.3rem;}
+.qqen{font-size:.9rem;color:var(--wood);margin-bottom:.2rem;font-weight:600;}
+.qqne{font-family:'Noto Sans Devanagari',sans-serif;font-size:.85rem;color:var(--wood);margin-bottom:.3rem;}
+.qinst{font-size:.75rem;color:rgba(139,94,60,.58);font-style:italic;}
+.qopts{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;}
+.qopt{background:var(--white);border:2px solid var(--wl);border-radius:4px;padding:.9rem;cursor:pointer;font-size:.85rem;font-weight:700;color:var(--wd);transition:all .15s;text-align:center;line-height:1.5;}
+.qopt:hover{background:rgba(139,94,60,.08);transform:translateY(-1px);}
+.qopt .qopt-ne{display:block;font-family:'Noto Sans Devanagari',sans-serif;font-size:.72rem;color:var(--wood);font-weight:400;margin-top:2px;}
+.qopt.ok{background:rgba(45,125,58,.13);border-color:var(--ok);color:var(--ok);}
+.qopt.bad{background:rgba(192,57,43,.09);border-color:var(--bad);color:var(--bad);}
+.qfb{padding:.9rem 1.3rem;margin-bottom:.9rem;font-size:.85rem;line-height:1.65;display:none;border-radius:4px;font-weight:600;}
+.qfb.show{display:block;}
+.qfb.okfb{background:rgba(45,125,58,.09);border-left:4px solid var(--ok);color:var(--ok);}
+.qfb.badfb{background:rgba(192,57,43,.07);border-left:4px solid var(--bad);color:var(--bad);}
+.qnext{background:var(--wd);color:var(--wl);border:none;border-radius:4px;padding:.85rem 2.2rem;font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:3px;cursor:pointer;display:none;transition:background .2s;}
+.qnext.show{display:inline-block;}.qnext:hover{background:var(--acc);}
+.qscore{text-align:center;padding:2.5rem 2rem;background:var(--white);border:2px solid var(--wl);border-radius:4px;box-shadow:6px 6px 0 var(--wl);display:none;}
+.qscore.show{display:block;}
+.snum{font-family:'Bebas Neue',sans-serif;font-size:5rem;color:var(--acc);line-height:1;}
+.slabel{font-size:.9rem;color:var(--wood);margin-bottom:1.2rem;font-weight:600;}
+.qrestart{background:var(--acc);color:white;border:none;border-radius:4px;padding:.85rem 2.2rem;font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:3px;cursor:pointer;}
+.quiz-tabs{display:flex;gap:.5rem;margin-bottom:1.5rem;flex-wrap:wrap;}
+.qtab{border:2px solid var(--wl);background:var(--white);color:var(--wood);padding:.5rem 1.2rem;font-family:'DM Sans',sans-serif;font-weight:700;font-size:.82rem;cursor:pointer;border-radius:4px;transition:all .15s;}
+.qtab.active{background:var(--wd);color:var(--wl);border-color:var(--wd);}
+
+/* HOMEWORK */
+.hwday{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:3px;color:var(--white);background:var(--wd);padding:.5rem 1.5rem;display:inline-block;margin-bottom:1rem;border-radius:2px;}
+.hwtasks{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:.85rem;margin-bottom:2rem;}
+.hwtask{background:var(--white);border:2px solid var(--wl);border-radius:4px;padding:1.1rem;box-shadow:3px 3px 0 var(--wl);position:relative;}
+.hwtask.done-task{opacity:.65;background:rgba(45,125,58,.05);border-color:var(--ok);}
+.hwtask-num{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:rgba(139,94,60,.12);position:absolute;top:.5rem;right:.8rem;line-height:1;}
+.hwtask-type{font-size:.62rem;letter-spacing:1px;text-transform:uppercase;color:var(--wood);margin-bottom:.4rem;font-weight:700;}
+.hwtask-q{font-family:'Noto Sans JP',sans-serif;font-size:1rem;font-weight:700;color:var(--wd);margin-bottom:.25rem;}
+.hwtask-en{font-size:.8rem;color:var(--steel);margin-bottom:.2rem;font-weight:600;}
+.hwtask-ne{font-family:'Noto Sans Devanagari',sans-serif;font-size:.8rem;color:var(--wood);margin-bottom:.6rem;}
+.hwtask-input{width:100%;font-family:'Noto Sans JP',sans-serif;font-size:.95rem;padding:.5rem .7rem;border:2px solid rgba(139,94,60,.3);background:var(--paper);color:var(--wd);outline:none;border-radius:3px;}
+.hwtask-input:focus{border-color:var(--wl);}
+.hwtask-fb{font-size:.78rem;margin-top:.5rem;padding:.4rem .6rem;display:none;border-radius:3px;font-weight:600;}
+.hwtask-fb.show{display:block;}
+.hwtask-fb.okfb{background:rgba(45,125,58,.1);color:var(--ok);}
+.hwtask-fb.badfb{background:rgba(192,57,43,.08);color:var(--bad);}
+.hw-btns{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.5rem;}
+.hw-btn{border:none;border-radius:4px;padding:.8rem 1.8rem;font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:2px;cursor:pointer;}
+.hw-btn.primary{background:var(--acc);color:white;}
+.hw-btn.secondary{background:var(--steel);color:white;}
+.hw-score-bar{background:var(--white);border:2px solid var(--wl);border-radius:4px;padding:1rem 1.5rem;margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem;box-shadow:3px 3px 0 var(--wl);}
+.hw-score-val{font-family:'Bebas Neue',sans-serif;font-size:2.5rem;color:var(--acc);line-height:1;}
+.hw-score-info{font-size:.82rem;color:var(--wood);font-weight:600;}
+
+/* CHEATSHEET */
+.ccols{display:grid;grid-template-columns:1fr 1fr;gap:1.3rem;}
+.cbox{background:var(--white);border:2px solid var(--wl);border-radius:4px;padding:1.1rem;box-shadow:3px 3px 0 var(--wl);}
+.cbtitle{font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:3px;color:var(--wd);border-bottom:2px solid var(--wl);padding-bottom:.45rem;margin-bottom:.7rem;}
+.crow{display:flex;justify-content:space-between;align-items:baseline;padding:.3rem 0;border-bottom:1px dashed rgba(139,94,60,.18);gap:.7rem;}
+.cjp{font-family:'Noto Sans JP',sans-serif;font-size:.92rem;font-weight:700;color:var(--wd);white-space:nowrap;}
+.cen{font-size:.75rem;color:var(--steel);text-align:right;font-weight:600;}
+.cne{font-family:'Noto Sans Devanagari',sans-serif;font-size:.72rem;color:var(--wood);text-align:right;}
+.tipbox{background:rgba(212,65,11,.06);border-left:4px solid var(--acc);padding:.9rem 1.1rem;margin-top:.9rem;border-radius:0 4px 4px 0;}
+.tiptitle{font-family:'Bebas Neue',sans-serif;letter-spacing:2px;color:var(--acc);margin-bottom:.35rem;font-size:.95rem;}
+.tipbody{font-size:.8rem;color:var(--steel);line-height:1.8;}
+
+/* LANG BADGE */
+.lang-badge{display:inline-block;font-size:.6rem;padding:1px 5px;border-radius:2px;margin-left:4px;vertical-align:middle;}
+.en-b{background:rgba(45,70,125,.12);color:#2D3748;}
+.ne-b{background:rgba(212,65,11,.12);color:var(--acc);}
+
+@media(max-width:700px){
+  .ccols,.qopts{grid-template-columns:1fr;}
+  nav button{padding:.75rem .65rem;font-size:.6rem;}
+  .stitle{font-size:1.9rem;}
+  .pgrid,.tool-grid,.kanji-grid{grid-template-columns:1fr 1fr;}
+  .hi{flex-direction:column;align-items:flex-start;}
+}
+@media(max-width:450px){
+  .tool-grid,.kanji-grid{grid-template-columns:1fr;}
+  .pgrid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<header>
+<div class="hi">
+  <div class="logo">大工<span>日本語</span><small>Japanese for Carpenters — नेपालीमा व्याख्या सहित</small></div>
+  <nav>
+    <button class="active" onclick="show('tools',this)">🔨 Tools / औजार</button>
+    <button onclick="show('kanji',this)">漢字 Kanji</button>
+    <button onclick="show('hiragana',this)">あ Hiragana</button>
+    <button onclick="show('verbs',this)">動詞 Verbs</button>
+    <button onclick="show('particles',this)">助詞 Particles</button>
+    <button onclick="show('phrases',this)">現場 Phrases</button>
+    <button onclick="show('quiz',this)">✦ Quiz</button>
+    <button onclick="show('homework',this)">📝 Homework</button>
+    <button onclick="show('cheatsheet',this)">Reference</button>
+  </nav>
+</div>
+</header>
+<main>
+
+<!-- ===== TOOLS ===== -->
+<section id="tools" class="sec active">
+<div class="stitle">道具 Carpenter's <span>Tools</span></div>
+<div class="ssub">All tools used on site — Japanese name with English & Nepali. Click a card to flip it!</div>
+<div class="intro-box">
+  <strong>How to use:</strong> Click each card to see more details. Learn the Japanese names and use them when talking to your foreman (職長 / शाखा प्रमुख).<br>
+  <span class="jp-big">この道具は何ですか？</span>
+  <span style="font-size:.8rem;color:var(--wood);">Kono dōgu wa nan desu ka? — <strong>What is this tool?</strong> — <span class="ne">यो औजार के हो?</span></span>
+</div>
+<div class="tool-grid" id="toolGrid"></div>
+</section>
+
+<!-- ===== KANJI ===== -->
+<section id="kanji" class="sec">
+<div class="stitle">漢字 <span>Kanji</span></div>
+<div class="ssub">Essential kanji for construction work — with readings, English meaning, and Nepali</div>
+<div class="kanji-intro">
+  <strong>What is Kanji?</strong> Japanese uses 3 types of writing: ひらがな (hiragana), カタカナ (katakana), and 漢字 (kanji). Kanji are Chinese-origin characters where each character carries a meaning. The kanji below appear frequently in carpentry work.<br><br>
+  <span class="ne">काञ्जी के हो? जापानीमा तीन प्रकारका लिपि हुन्छन् — हिरागाना, काताकाना र काञ्जी। काञ्जी चिनियाँ मूलका अक्षर हुन् र प्रत्येक अक्षरको आफ्नै अर्थ हुन्छ।</span>
+</div>
+<div class="kanji-grid" id="kanjiGrid"></div>
+</section>
+
+<!-- ===== HIRAGANA ===== -->
+<section id="hiragana" class="sec">
+<div class="stitle">ひらがな <span>Hiragana</span></div>
+<div class="ssub">The basic Japanese alphabet — 46 characters. You must memorize all of these!</div>
+<div class="hira-intro">
+  <strong>Why is hiragana important?</strong> Hiragana is used for verb endings, particles, and connecting words. For example: 切<strong>る</strong>、切<strong>って</strong>、切<strong>ら</strong>ない — the red parts are all hiragana. Without knowing these, you cannot conjugate verbs!<br><br>
+  <span class="ne"><strong>हिरागाना किन महत्त्वपूर्ण छ?</strong> हिरागाना क्रियाका अन्त्य, कारक चिह्न र जोड्ने शब्दहरूमा प्रयोग हुन्छ। यी नजानीकन क्रिया रूपान्तरण गर्न सकिँदैन!</span>
+</div>
+<div id="hiraGrid"></div>
+</section>
+
+<!-- ===== VERBS ===== -->
+<section id="verbs" class="sec">
+<div class="stitle">動詞 Verb <span>Conjugation</span></div>
+<div class="ssub">動詞の活用 — All examples use carpentry vocabulary. ③ て-form is the most important!</div>
+
+<div class="glabel g1">Group 1 — U-Verbs (う動詞)</div>
+<div class="gnote">
+  Dictionary form ends in う-sound. <strong>Rule:</strong> く→いて, ぐ→いで, す→して, つ/る/う→って, ぬ/ぶ/む→んで<br>
+  <span class="ne">शब्दकोशको रूप "う" ध्वनिमा समाप्त हुन्छ।</span>
+</div>
+<div class="twrap"><table>
+<thead><tr><th>Verb</th><th>①Plain / शब्दकोश</th><th>②Polite / मर्यादित</th><th>③て-form ★★★</th><th>④Past た / भूत</th><th>⑤Neg. ない / नकार</th><th>⑥If たら / भए</th><th>⑦Can 可能 / सक्छ</th></tr></thead>
+<tbody>
+<tr><td><span class="jp">切る</span><br><span class="roma">kiru</span><br><span class="nen">to cut</span><br><span class="nne">काट्नु</span></td><td class="fc">切る<span class="roma">kiru</span></td><td class="fc">切ります<span class="roma">kirimasu</span></td><td class="fc hc">切って<span class="roma">kitte</span></td><td class="fc">切った<span class="roma">kitta</span></td><td class="fc">切らない<span class="roma">kiranai</span></td><td class="fc">切ったら<span class="roma">kittara</span></td><td class="fc">切れる<span class="roma">kireru</span></td></tr>
+<tr><td><span class="jp">打つ</span><br><span class="roma">utsu</span><br><span class="nen">to hit/drive</span><br><span class="nne">ठोक्नु</span></td><td class="fc">打つ<span class="roma">utsu</span></td><td class="fc">打ちます<span class="roma">uchimasu</span></td><td class="fc hc">打って<span class="roma">utte</span></td><td class="fc">打った<span class="roma">utta</span></td><td class="fc">打たない<span class="roma">utanai</span></td><td class="fc">打ったら<span class="roma">uttara</span></td><td class="fc">打てる<span class="roma">uteru</span></td></tr>
+<tr><td><span class="jp">測る</span><br><span class="roma">hakaru</span><br><span class="nen">to measure</span><br><span class="nne">नाप्नु</span></td><td class="fc">測る<span class="roma">hakaru</span></td><td class="fc">測ります<span class="roma">hakarimasu</span></td><td class="fc hc">測って<span class="roma">hakatte</span></td><td class="fc">測った<span class="roma">hakatta</span></td><td class="fc">測らない<span class="roma">hakaranai</span></td><td class="fc">測ったら<span class="roma">hakattara</span></td><td class="fc">測れる<span class="roma">hakareru</span></td></tr>
+<tr><td><span class="jp">運ぶ</span><br><span class="roma">hakobu</span><br><span class="nen">to carry</span><br><span class="nne">बोक्नु</span></td><td class="fc">運ぶ<span class="roma">hakobu</span></td><td class="fc">運びます<span class="roma">hakobimasu</span></td><td class="fc hc">運んで<span class="roma">hakonde</span></td><td class="fc">運んだ<span class="roma">hakonda</span></td><td class="fc">運ばない<span class="roma">hakobanai</span></td><td class="fc">運んだら<span class="roma">hakondara</span></td><td class="fc">運べる<span class="roma">hakoberu</span></td></tr>
+<tr><td><span class="jp">引く</span><br><span class="roma">hiku</span><br><span class="nen">to pull</span><br><span class="nne">तान्नु</span></td><td class="fc">引く<span class="roma">hiku</span></td><td class="fc">引きます<span class="roma">hikimasu</span></td><td class="fc hc">引いて<span class="roma">hiite</span></td><td class="fc">引いた<span class="roma">hiita</span></td><td class="fc">引かない<span class="roma">hikanai</span></td><td class="fc">引いたら<span class="roma">hiitara</span></td><td class="fc">引ける<span class="roma">hikeru</span></td></tr>
+<tr><td><span class="jp">直す</span><br><span class="roma">naosu</span><br><span class="nen">to fix/repair</span><br><span class="nne">मर्मत गर्नु</span></td><td class="fc">直す<span class="roma">naosu</span></td><td class="fc">直します<span class="roma">naoshimasu</span></td><td class="fc hc">直して<span class="roma">naoshite</span></td><td class="fc">直した<span class="roma">naoshita</span></td><td class="fc">直さない<span class="roma">naosanai</span></td><td class="fc">直したら<span class="roma">naoshitara</span></td><td class="fc">直せる<span class="roma">naoseru</span></td></tr>
+</tbody></table></div>
+
+<div class="glabel g2">Group 2 — Ru-Verbs (る動詞)</div>
+<div class="gnote">Dictionary form ends in る. <strong>Rule:</strong> Drop る, then add て → 付ける → 付け + て = 付けて<br>
+<span class="ne">शब्दकोशको रूप "る" मा समाप्त हुन्छ। "る" हटाएर "て" थप्नुहोस्।</span></div>
+<div class="twrap"><table>
+<thead><tr><th>Verb</th><th>①Plain</th><th>②Polite</th><th>③て-form ★★★</th><th>④Past た</th><th>⑤Neg. ない</th><th>⑥If たら</th><th>⑦Can 可能</th></tr></thead>
+<tbody>
+<tr><td><span class="jp">付ける</span><br><span class="roma">tsukeru</span><br><span class="nen">to install/attach</span><br><span class="nne">जडान गर्नु</span></td><td class="fc">付ける<span class="roma">tsukeru</span></td><td class="fc">付けます<span class="roma">tsukemasu</span></td><td class="fc hc">付けて<span class="roma">tsukete</span></td><td class="fc">付けた<span class="roma">tsuketa</span></td><td class="fc">付けない<span class="roma">tsukenai</span></td><td class="fc">付けたら<span class="roma">tsuketara</span></td><td class="fc">付けられる<span class="roma">tsukerareru</span></td></tr>
+<tr><td><span class="jp">調べる</span><br><span class="roma">shiraberu</span><br><span class="nen">to check/inspect</span><br><span class="nne">जाँच्नु</span></td><td class="fc">調べる<span class="roma">shiraberu</span></td><td class="fc">調べます<span class="roma">shirabemasu</span></td><td class="fc hc">調べて<span class="roma">shirabete</span></td><td class="fc">調べた<span class="roma">shirabeta</span></td><td class="fc">調べない<span class="roma">shirabenai</span></td><td class="fc">調べたら<span class="roma">shirabitara</span></td><td class="fc">調べられる<span class="roma">shiraberareru</span></td></tr>
+<tr><td><span class="jp">止める</span><br><span class="roma">tomeru</span><br><span class="nen">to stop</span><br><span class="nne">रोक्नु</span></td><td class="fc">止める<span class="roma">tomeru</span></td><td class="fc">止めます<span class="roma">tomemasu</span></td><td class="fc hc">止めて<span class="roma">tomete</span></td><td class="fc">止めた<span class="roma">tometa</span></td><td class="fc">止めない<span class="roma">tomenai</span></td><td class="fc">止めたら<span class="roma">tometara</span></td><td class="fc">止められる<span class="roma">tomerareru</span></td></tr>
+</tbody></table></div>
+
+<div class="glabel g3">Group 3 — Irregular (不規則動詞)</div>
+<div class="twrap"><table>
+<thead><tr><th>Verb</th><th>①Plain</th><th>②Polite</th><th>③て-form ★★★</th><th>④Past た</th><th>⑤Neg. ない</th><th>⑥If たら</th><th>⑦Can 可能</th></tr></thead>
+<tbody>
+<tr><td><span class="jp">する</span><br><span class="roma">suru</span><br><span class="nen">to do</span><br><span class="nne">गर्नु</span></td><td class="fc">する<span class="roma">suru</span></td><td class="fc">します<span class="roma">shimasu</span></td><td class="fc hc">して<span class="roma">shite</span></td><td class="fc">した<span class="roma">shita</span></td><td class="fc">しない<span class="roma">shinai</span></td><td class="fc">したら<span class="roma">shitara</span></td><td class="fc">できる<span class="roma">dekiru</span></td></tr>
+<tr><td><span class="jp">来る</span><br><span class="roma">kuru</span><br><span class="nen">to come</span><br><span class="nne">आउनु</span></td><td class="fc">来る<span class="roma">kuru</span></td><td class="fc">来ます<span class="roma">kimasu</span></td><td class="fc hc">来て<span class="roma">kite</span></td><td class="fc">来た<span class="roma">kita</span></td><td class="fc">来ない<span class="roma">konai</span></td><td class="fc">来たら<span class="roma">kitara</span></td><td class="fc">来られる<span class="roma">korareru</span></td></tr>
+</tbody></table></div>
+
+<div class="tipbox">
+<div class="tiptitle">🔑 て-form Rules — Most Used on the Job Site</div>
+<div class="tipbody">
+<strong>U-verb changes:</strong> く→いて ｜ ぐ→いで ｜ す→して ｜ つ/る/う→って ｜ ぬ/ぶ/む→んで<br>
+<strong>て-form uses:</strong> ～てください (please do) ｜ ～ています (doing now) ｜ ～てから (after doing) ｜ ～ておく (prepare in advance)<br>
+<span class="ne" style="display:block;margin-top:.5rem;font-size:.78rem;">て रूपको प्रयोग: ～てください (गर्नुहोस्) ｜ ～ています (गर्दैछु) ｜ ～てから (गरेपछि)</span>
+</div>
+</div>
+</section>
+
+<!-- ===== PARTICLES ===== -->
+<section id="particles" class="sec">
+<div class="stitle">助詞 <span>Particles</span></div>
+<div class="ssub">Japanese particles mark the role of each word in a sentence — like case markers. Essential for correct sentences!</div>
+
+<div style="background:var(--white);border:2px solid var(--gold);border-radius:4px;padding:1.3rem 1.5rem;margin-bottom:1.8rem;box-shadow:3px 3px 0 var(--gold);">
+  <div style="font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:2px;color:var(--gold);margin-bottom:.8rem;">💡 Comparison with English / Nepali Grammar</div>
+  <div style="overflow-x:auto;">
+  <table style="width:100%;box-shadow:none;font-size:.8rem;">
+    <thead><tr style="background:var(--wd);color:var(--wl);">
+      <th style="padding:.5rem .8rem;">English role</th>
+      <th style="padding:.5rem .8rem;">Nepali (कारक)</th>
+      <th style="padding:.5rem .8rem;">Japanese particle</th>
+      <th style="padding:.5rem .8rem;">Function</th>
+    </tr></thead>
+    <tbody>
+      <tr style="border-bottom:1px solid rgba(139,94,60,.12);"><td style="padding:.5rem .8rem;font-weight:700;color:var(--acc);">Topic marker</td><td style="padding:.5rem .8rem;">— (none)</td><td style="padding:.5rem .8rem;font-family:'Noto Sans JP',sans-serif;font-weight:900;font-size:1.1rem;color:var(--wd);">は・が</td><td style="padding:.5rem .8rem;font-size:.75rem;color:var(--steel);">Marks topic or subject</td></tr>
+      <tr style="border-bottom:1px solid rgba(139,94,60,.12);background:rgba(139,94,60,.03);"><td style="padding:.5rem .8rem;font-weight:700;color:var(--acc);">Direct object</td><td style="padding:.5rem .8rem;">लाई / -लाई</td><td style="padding:.5rem .8rem;font-family:'Noto Sans JP',sans-serif;font-weight:900;font-size:1.1rem;color:var(--wd);">を</td><td style="padding:.5rem .8rem;font-size:.75rem;color:var(--steel);">What the action is done TO</td></tr>
+      <tr style="border-bottom:1px solid rgba(139,94,60,.12);"><td style="padding:.5rem .8rem;font-weight:700;color:var(--acc);">Direction / at / in</td><td style="padding:.5rem .8rem;">-मा / -तिर</td><td style="padding:.5rem .8rem;font-family:'Noto Sans JP',sans-serif;font-weight:900;font-size:1.1rem;color:var(--wd);">に・へ</td><td style="padding:.5rem .8rem;font-size:.75rem;color:var(--steel);">Direction, time, location of existence</td></tr>
+      <tr style="border-bottom:1px solid rgba(139,94,60,.12);background:rgba(139,94,60,.03);"><td style="padding:.5rem .8rem;font-weight:700;color:var(--acc);">From</td><td style="padding:.5rem .8rem;">-बाट / -देखि</td><td style="padding:.5rem .8rem;font-family:'Noto Sans JP',sans-serif;font-weight:900;font-size:1.1rem;color:var(--wd);">から・より</td><td style="padding:.5rem .8rem;font-size:.75rem;color:var(--steel);">Starting point, origin</td></tr>
+      <tr style="border-bottom:1px solid rgba(139,94,60,.12);"><td style="padding:.5rem .8rem;font-weight:700;color:var(--acc);">By / with (tool)</td><td style="padding:.5rem .8rem;">-ले / -द्वारा</td><td style="padding:.5rem .8rem;font-family:'Noto Sans JP',sans-serif;font-weight:900;font-size:1.1rem;color:var(--wd);">で</td><td style="padding:.5rem .8rem;font-size:.75rem;color:var(--steel);">Tool / method / place of action</td></tr>
+      <tr style="border-bottom:1px solid rgba(139,94,60,.12);background:rgba(139,94,60,.03);"><td style="padding:.5rem .8rem;font-weight:700;color:var(--acc);">With (person)</td><td style="padding:.5rem .8rem;">-सँग</td><td style="padding:.5rem .8rem;font-family:'Noto Sans JP',sans-serif;font-weight:900;font-size:1.1rem;color:var(--wd);">と</td><td style="padding:.5rem .8rem;font-size:.75rem;color:var(--steel);">Together with a person</td></tr>
+      <tr><td style="padding:.5rem .8rem;font-weight:700;color:var(--acc);">Possessive ('s)</td><td style="padding:.5rem .8rem;">-को</td><td style="padding:.5rem .8rem;font-family:'Noto Sans JP',sans-serif;font-weight:900;font-size:1.1rem;color:var(--wd);">の</td><td style="padding:.5rem .8rem;font-size:.75rem;color:var(--steel);">Ownership / belonging</td></tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+
+<div class="pgrid">
+
+<div class="pcard">
+  <div style="display:flex;align-items:flex-start;gap:.8rem;">
+    <div><div class="pbadge">は</div><div class="pname">wa</div></div>
+    <div style="flex:1;">
+      <div style="font-size:.72rem;background:rgba(212,65,11,.08);color:var(--acc);padding:2px 8px;border-radius:2px;display:inline-block;margin-bottom:.4rem;font-weight:700;">Topic marker / विषय चिह्न</div>
+      <div class="prule">Marks the <strong>topic</strong> of the sentence. Difference from が: は = known topic, が = new info or emphasis.<br><span class="ne" style="font-size:.72rem;">वाक्यको विषय जनाउँछ।</span></div>
+    </div>
+  </div>
+  <div class="pex">この木材は3メートルです。</div>
+  <div class="proma">Kono mokuzai wa san mētoru desu.</div>
+  <div class="pen">This lumber is 3 meters.</div>
+  <div class="pne">यो काठ ३ मिटर छ।</div>
+</div>
+
+<div class="pcard">
+  <div style="display:flex;align-items:flex-start;gap:.8rem;">
+    <div><div class="pbadge">が</div><div class="pname">ga</div></div>
+    <div style="flex:1;">
+      <div style="font-size:.72rem;background:rgba(212,65,11,.08);color:var(--acc);padding:2px 8px;border-radius:2px;display:inline-block;margin-bottom:.4rem;font-weight:700;">Subject marker / कर्ता चिह्न</div>
+      <div class="prule">Marks the <strong>doer/subject</strong>. Always used with あります/います.<br><span class="ne" style="font-size:.72rem;">कर्ता जनाउँछ। आवश्यक: あります/います सँग सधैँ が।</span></div>
+    </div>
+  </div>
+  <div class="pex">クギがありません。</div>
+  <div class="proma">Kugi ga arimasen.</div>
+  <div class="pen">There are no nails.</div>
+  <div class="pne">कील छैन।</div>
+</div>
+
+<div class="pcard">
+  <div style="display:flex;align-items:flex-start;gap:.8rem;">
+    <div><div class="pbadge">を</div><div class="pname">wo</div></div>
+    <div style="flex:1;">
+      <div style="font-size:.72rem;background:rgba(45,125,58,.1);color:var(--ok);padding:2px 8px;border-radius:2px;display:inline-block;margin-bottom:.4rem;font-weight:700;">Object marker / कर्म चिह्न</div>
+      <div class="prule">Marks <strong>what</strong> the action is done to (direct object).<br><span class="ne" style="font-size:.72rem;">क्रिया कसमा गरिन्छ त्यो जनाउँछ।</span></div>
+    </div>
+  </div>
+  <div class="pex">板を切ってください。</div>
+  <div class="proma">Ita wo kitte kudasai.</div>
+  <div class="pen">Please cut the board.</div>
+  <div class="pne">बोर्ड काट्नुहोस्।</div>
+</div>
+
+<div class="pcard">
+  <div style="display:flex;align-items:flex-start;gap:.8rem;">
+    <div><div class="pbadge">に</div><div class="pname">ni</div></div>
+    <div style="flex:1;">
+      <div style="font-size:.72rem;background:rgba(45,125,58,.1);color:var(--ok);padding:2px 8px;border-radius:2px;display:inline-block;margin-bottom:.4rem;font-weight:700;">Direction / Time / Existence location</div>
+      <div class="prule"><strong>3 uses:</strong><br>① Direction — "to/toward"<br>② Time — 9時に = at 9 o'clock<br>③ Existence location — with あります/います<br><span class="ne" style="font-size:.72rem;">तीन प्रयोग: दिशा, समय, अवस्थिति।</span></div>
+    </div>
+  </div>
+  <div class="pex">屋根に上ります。</div>
+  <div class="proma">Yane ni noborimasu.</div>
+  <div class="pen">I go up to the roof.</div>
+  <div class="pne">छानामा चढ्छु।</div>
+</div>
+
+<div class="pcard">
+  <div style="display:flex;align-items:flex-start;gap:.8rem;">
+    <div><div class="pbadge">で</div><div class="pname">de</div></div>
+    <div style="flex:1;">
+      <div style="font-size:.72rem;background:rgba(45,125,58,.1);color:var(--ok);padding:2px 8px;border-radius:2px;display:inline-block;margin-bottom:.4rem;font-weight:700;">Tool / Method / Place of action</div>
+      <div class="prule"><strong>2 uses:</strong><br>① Tool/method — "by means of"<br>② Place where action happens<br>⚠️ に vs で: に = exists there, で = action happens there<br><span class="ne" style="font-size:.72rem;">औजार/तरिका र क्रिया हुने स्थान।</span></div>
+    </div>
+  </div>
+  <div class="pex">のこぎりで木を切ります。</div>
+  <div class="proma">Nokogiri de ki wo kirimasu.</div>
+  <div class="pen">I cut wood with a saw.</div>
+  <div class="pne">आरीले काठ काट्छु।</div>
+</div>
+
+<div class="pcard">
+  <div style="display:flex;align-items:flex-start;gap:.8rem;">
+    <div><div class="pbadge">と</div><div class="pname">to</div></div>
+    <div style="flex:1;">
+      <div style="font-size:.72rem;background:rgba(45,125,58,.1);color:var(--ok);padding:2px 8px;border-radius:2px;display:inline-block;margin-bottom:.4rem;font-weight:700;">Together with / and (list)</div>
+      <div class="prule">Used for doing something <strong>with a person</strong>, or listing things.<br><span class="ne" style="font-size:.72rem;">कसैसँग मिलेर, वा वस्तुहरू सूचीबद्ध गर्न।</span></div>
+    </div>
+  </div>
+  <div class="pex">職長と話します。</div>
+  <div class="proma">Shokuchō to hanashimasu.</div>
+  <div class="pen">I talk with the foreman.</div>
+  <div class="pne">फोरम्यानसँग कुरा गर्छु।</div>
+</div>
+
+<div class="pcard">
+  <div style="display:flex;align-items:flex-start;gap:.8rem;">
+    <div><div class="pbadge">の</div><div class="pname">no</div></div>
+    <div style="flex:1;">
+      <div style="font-size:.72rem;background:rgba(45,125,58,.1);color:var(--ok);padding:2px 8px;border-radius:2px;display:inline-block;margin-bottom:.4rem;font-weight:700;">Possessive ('s) / of</div>
+      <div class="prule">Links two nouns: A の B = "B of A" or "A's B".<br><span class="ne" style="font-size:.72rem;">दुई नामलाई जोड्छ। को (Nepali: -को) जस्तै।</span></div>
+    </div>
+  </div>
+  <div class="pex">会社の道具です。</div>
+  <div class="proma">Kaisha no dōgu desu.</div>
+  <div class="pen">It is the company's tool.</div>
+  <div class="pne">कम्पनीको औजार हो।</div>
+</div>
+
+<div class="pcard">
+  <div style="display:flex;align-items:flex-start;gap:.8rem;">
+    <div><div class="pbadge" style="font-size:1.3rem;">から</div><div class="pname">kara</div></div>
+    <div style="flex:1;">
+      <div style="font-size:.72rem;background:rgba(45,125,58,.1);color:var(--ok);padding:2px 8px;border-radius:2px;display:inline-block;margin-bottom:.4rem;font-weight:700;">From / After doing</div>
+      <div class="prule">Marks starting point. Also used as "after doing" (て+から).<br><span class="ne" style="font-size:.72rem;">सुरुको बिन्दु। "गरेपछि" पनि भन्न सकिन्छ।</span></div>
+    </div>
+  </div>
+  <div class="pex">確認してから進めます。</div>
+  <div class="proma">Kakunin shite kara susumemasu.</div>
+  <div class="pen">I'll proceed after checking.</div>
+  <div class="pne">जाँचेपछि अगाडि बढ्छु।</div>
+</div>
+
+<div class="pcard">
+  <div style="display:flex;align-items:flex-start;gap:.8rem;">
+    <div><div class="pbadge">も</div><div class="pname">mo</div></div>
+    <div style="flex:1;">
+      <div style="font-size:.72rem;background:rgba(201,150,42,.12);color:var(--gold);padding:2px 8px;border-radius:2px;display:inline-block;margin-bottom:.4rem;font-weight:700;">Also / too / even</div>
+      <div class="prule">Replaces は or が/を to add the meaning of "also/too".<br><span class="ne" style="font-size:.72rem;">"पनि / समेत" भन्न प्रयोग हुन्छ।</span></div>
+    </div>
+  </div>
+  <div class="pex">ヘルメットもつけてください。</div>
+  <div class="proma">Herumetto mo tsukete kudasai.</div>
+  <div class="pen">Please also wear a helmet.</div>
+  <div class="pne">हेलमेट पनि लगाउनुहोस्।</div>
+</div>
+
+<div class="pcard">
+  <div style="display:flex;align-items:flex-start;gap:.8rem;">
+    <div><div class="pbadge">か</div><div class="pname">ka</div></div>
+    <div style="flex:1;">
+      <div style="font-size:.72rem;background:rgba(201,150,42,.12);color:var(--gold);padding:2px 8px;border-radius:2px;display:inline-block;margin-bottom:.4rem;font-weight:700;">Question marker / प्रश्न चिह्न</div>
+      <div class="prule">Added at end of sentence to make a yes/no question (like "?").<br><span class="ne"="font-size:.72rem;">वाक्यको अन्त्यमा थपेर प्रश्न बनाइन्छ।</span></div>
+    </div>
+  </div>
+  <div class="pex">測りましたか？</div>
+  <div class="proma">Hakarimashita ka?</div>
+  <div class="pen">Did you measure it?</div>
+  <div class="pne">नाप्नुभयो?</div>
+</div>
+
+</div>
+
+<div style="background:var(--white);border:2px solid var(--bad);border-radius:4px;padding:1.2rem 1.5rem;box-shadow:3px 3px 0 var(--bad);margin-bottom:1.5rem;">
+  <div style="font-family:'Bebas Neue',sans-serif;letter-spacing:2px;color:var(--bad);margin-bottom:.8rem;font-size:1rem;">⚠️ に vs で — Location particles: two different meanings!</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;font-size:.82rem;">
+    <div style="background:rgba(212,65,11,.05);padding:.8rem;border-radius:4px;border-left:3px solid var(--acc);">
+      <div style="font-weight:700;color:var(--acc);margin-bottom:.3rem;">に → Where something EXISTS</div>
+      <div style="font-family:'Noto Sans JP',sans-serif;font-weight:700;color:var(--wd);">道具箱に工具があります。</div>
+      <div style="color:var(--wood);font-size:.65rem;margin:2px 0;">Dōgu-bako ni kōgu ga arimasu.</div>
+      <div style="color:var(--steel);font-weight:600;">Tools are <strong>in</strong> the toolbox.<br><span style="font-family:'Noto Sans Devanagari',sans-serif;font-weight:400;font-size:.75rem;">औजारबाकसमा सामान छ।</span></div>
+    </div>
+    <div style="background:rgba(45,125,58,.05);padding:.8rem;border-radius:4px;border-left:3px solid var(--ok);">
+      <div style="font-weight:700;color:var(--ok);margin-bottom:.3rem;">で → Where ACTION happens</div>
+      <div style="font-family:'Noto Sans JP',sans-serif;font-weight:700;color:var(--wd);">道具箱で工具を探します。</div>
+      <div style="color:var(--wood);font-size:.65rem;margin:2px 0;">Dōgu-bako de kōgu wo sagashimasu.</div>
+      <div style="color:var(--steel);font-weight:600;">I search for tools <strong>in</strong> the toolbox.<br><span style="font-family:'Noto Sans Devanagari',sans-serif;font-weight:400;font-size:.75rem;">औजारबाकसमा खोज्छु।</span></div>
+    </div>
+  </div>
+  <div style="margin-top:.8rem;font-size:.8rem;color:var(--steel);background:var(--soft);padding:.6rem .8rem;border-radius:3px;"><strong>Rule:</strong> Ask yourself — "Does it just EXIST there, or is an ACTION happening there?"</div>
+</div>
+</section>
+
+<!-- ===== PHRASES ===== -->
+<section id="phrases" class="sec">
+<div class="stitle">現場 Site <span>Phrases</span></div>
+<div class="ssub">Useful Japanese phrases for the work site — with English and Nepali translations</div>
+
+<div class="pcat">🔴 Safety / सुरक्षा 安全</div>
+<div class="phgrid">
+<div class="phcard s"><div class="phjp">危ないです！止まってください！</div><div class="phroma">Abunai desu! Tomatte kudasai!</div><div class="phen">Danger! Please stop!</div><div class="phne">खतरा छ! रोक्नुहोस्!</div><div class="gtag">て-form + ください</div></div>
+<div class="phcard s"><div class="phjp">ヘルメットをつけてください。</div><div class="phroma">Herumetto wo tsukete kudasai.</div><div class="phen">Please wear a helmet.</div><div class="phne">हेलमेट लगाउनुहोस्।</div><div class="gtag">を + て + ください</div></div>
+<div class="phcard s"><div class="phjp">足元に気をつけてください。</div><div class="phroma">Ashimoto ni ki wo tsukete kudasai.</div><div class="phen">Watch your footing.</div><div class="phne">खुट्टाको तलतिर ध्यान दिनुहोस्।</div><div class="gtag">に + て + ください</div></div>
+<div class="phcard s"><div class="phjp">ここは立入禁止です。</div><div class="phroma">Koko wa tachiiri kinshi desu.</div><div class="phen">No entry here.</div><div class="phne">यहाँ प्रवेश निषेध छ।</div><div class="gtag">は + です</div></div>
+<div class="phcard s"><div class="phjp">怪我をしました。</div><div class="phroma">Kega wo shimashita.</div><div class="phen">I got injured.</div><div class="phne">म घाइते भएँ।</div><div class="gtag">を + した</div></div>
+<div class="phcard s"><div class="phjp">電源を切ってから作業してください。</div><div class="phroma">Dengen wo kitte kara sagyō shite kudasai.</div><div class="phen">Please work after turning off power.</div><div class="phne">बिजुली काटेपछि काम गर्नुहोस्।</div><div class="gtag">て + から</div></div>
+</div>
+
+<div class="pcat">🔨 Tools & Materials / औजार र सामग्री 道具・材料</div>
+<div class="phgrid">
+<div class="phcard t"><div class="phjp">のこぎりを貸してください。</div><div class="phroma">Nokogiri wo kashite kudasai.</div><div class="phen">Please lend me the saw.</div><div class="phne">आरी उधारो दिनुहोस्।</div><div class="gtag">を + て + ください</div></div>
+<div class="phcard t"><div class="phjp">この木材は何ミリですか？</div><div class="phroma">Kono mokuzai wa nan miri desu ka?</div><div class="phen">How many mm is this lumber?</div><div class="phne">यो काठ कति मिलिमिटर हो?</div><div class="gtag">は + です + か</div></div>
+<div class="phcard t"><div class="phjp">ネジが足りません。</div><div class="phroma">Neji ga tarimasen.</div><div class="phen">We don't have enough screws.</div><div class="phne">स्क्रु पुगेन।</div><div class="gtag">が + negation</div></div>
+<div class="phcard t"><div class="phjp">道具はどこに置きましたか？</div><div class="phroma">Dōgu wa doko ni okimashita ka?</div><div class="phen">Where did you put the tools?</div><div class="phne">औजार कहाँ राख्नुभयो?</div><div class="gtag">は + に + past + か</div></div>
+<div class="phcard t"><div class="phjp">これでいいですか？</div><div class="phroma">Kore de ii desu ka?</div><div class="phen">Is this okay?</div><div class="phne">यसरी हुन्छ?</div><div class="gtag">で + いい + か</div></div>
+<div class="phcard t"><div class="phjp">材料が足りなくなったら、言ってください。</div><div class="phroma">Zairyō ga tarinaku nattara, itte kudasai.</div><div class="phen">Tell me if materials run out.</div><div class="phne">सामग्री सकिए भने भन्नुहोस्।</div><div class="gtag">たら + ください</div></div>
+</div>
+
+<div class="pcat">📋 Requests & Instructions / अनुरोध र निर्देशन 依頼・指示</div>
+<div class="phgrid">
+<div class="phcard r"><div class="phjp">もう一度見せてもらえますか？</div><div class="phroma">Mō ichido misete moraemasu ka?</div><div class="phen">Could you show me one more time?</div><div class="phne">एकपटक फेरि देखाइदिनुहोस् ?</div><div class="gtag">て + もらえますか</div></div>
+<div class="phcard r"><div class="phjp">これを手伝っていただけますか？</div><div class="phroma">Kore wo tetsudatte itadakemasu ka?</div><div class="phen">Could you help me with this?</div><div class="phne">यसमा मद्दत गर्नुहुन्छ?</div><div class="gtag">て + いただけますか</div></div>
+<div class="phcard r"><div class="phjp">ゆっくり話してください。</div><div class="phroma">Yukkuri hanashite kudasai.</div><div class="phen">Please speak slowly.</div><div class="phne">बिस्तारै बोल्नुहोस्।</div><div class="gtag">て + ください</div></div>
+<div class="phcard r"><div class="phjp">もう少し右に寄せてください。</div><div class="phroma">Mō sukoshi migi ni yosete kudasai.</div><div class="phen">Move it a little to the right.</div><div class="phne">अलि दाहिनेतिर सार्नुहोस्।</div><div class="gtag">に + て + ください</div></div>
+<div class="phcard r"><div class="phjp">先に準備しておきます。</div><div class="phroma">Saki ni junbi shite okimasu.</div><div class="phen">I'll prepare in advance.</div><div class="phne">पहिले तयार गर्छु।</div><div class="gtag">て + おく</div></div>
+<div class="phcard r"><div class="phjp">確認してから進めます。</div><div class="phroma">Kakunin shite kara susumemasu.</div><div class="phen">I'll proceed after checking.</div><div class="phne">जाँचेपछि अगाडि बढ्छु।</div><div class="gtag">て + から</div></div>
+</div>
+
+<div class="pcat">📢 Reporting / रिपोर्ट 報告</div>
+<div class="phgrid">
+<div class="phcard p"><div class="phjp">作業が終わりました。</div><div class="phroma">Sagyō ga owarimashita.</div><div class="phen">Work is finished.</div><div class="phne">काम सकियो।</div><div class="gtag">が + past</div></div>
+<div class="phcard p"><div class="phjp">今、基礎を作っています。</div><div class="phroma">Ima, kiso wo tsukutte imasu.</div><div class="phen">I am currently building the foundation.</div><div class="phne">अहिले आधार बनाउँदैछु।</div><div class="gtag">を + て + います</div></div>
+<div class="phcard p"><div class="phjp">問題があります。</div><div class="phroma">Mondai ga arimasu.</div><div class="phen">There is a problem.</div><div class="phne">समस्या छ।</div><div class="gtag">が + あります</div></div>
+<div class="phcard p"><div class="phjp">わかりました。すぐやります。</div><div class="phroma">Wakarimashita. Sugu yarimasu.</div><div class="phen">Understood. I'll do it right away.</div><div class="phne">बुझेँ। अहिले नै गर्छु।</div><div class="gtag">past + present</div></div>
+<div class="phcard p"><div class="phjp">すみません、わかりません。</div><div class="phroma">Sumimasen, wakarimasen.</div><div class="phen">Sorry, I don't understand.</div><div class="phne">माफ गर्नुस्, मलाई थाहा छैन।</div><div class="gtag">negation</div></div>
+<div class="phcard p"><div class="phjp">少し時間がかかります。</div><div class="phroma">Sukoshi jikan ga kakarimasu.</div><div class="phen">It will take a little time.</div><div class="phne">अलि समय लाग्छ।</div><div class="gtag">が + かかる</div></div>
+</div>
+</section>
+
+<!-- ===== QUIZ ===== -->
+<section id="quiz" class="sec">
+<div class="stitle">✦ <span>Quiz</span></div>
+<div class="ssub">Test your knowledge — select a topic and start!</div>
+<div class="quiz-tabs">
+  <button class="qtab active" onclick="selectQSet('all',this)">🔀 All (Hard)</button>
+  <button class="qtab" onclick="selectQSet('tools',this)">🔨 Tools / औजार</button>
+  <button class="qtab" onclick="selectQSet('kanji',this)">漢字 Kanji</button>
+  <button class="qtab" onclick="selectQSet('verbs',this)">動詞 Verbs</button>
+  <button class="qtab" onclick="selectQSet('particles',this)">助詞 Particles</button>
+  <button class="qtab" onclick="selectQSet('hira',this)">あ Hiragana</button>
+</div>
+<div class="qwrap">
+  <div class="qprog" id="qprog"></div>
+  <div id="qcard" class="qcard"></div>
+  <div id="qopts" class="qopts"></div>
+  <div id="qfb" class="qfb"></div>
+  <button id="qnext" class="qnext" onclick="nextQ()">次へ → NEXT</button>
+  <div id="qscore" class="qscore">
+    <div class="snum" id="snum"></div>
+    <div class="slabel">Correct Answers / सही उत्तर</div>
+    <div id="smsg" style="font-size:.85rem;color:var(--wood);margin-bottom:1.2rem;font-weight:600;"></div>
+    <button class="qrestart" onclick="startQuiz()">もう一回 — TRY AGAIN</button>
+  </div>
+</div>
+</section>
+
+<!-- ===== HOMEWORK ===== -->
+<section id="homework" class="sec">
+<div class="stitle">📝 <span>Homework</span></div>
+<div class="ssub">Practice exercises — write your answer and click "Check All" / गृहकार्य — उत्तर लेख्नुस् र "सबै जाँच्नुस्" थिच्नुस्</div>
+<div id="hwScoreBar" class="hw-score-bar" style="display:none">
+  <div class="hw-score-val" id="hwScoreVal">0/0</div>
+  <div class="hw-score-info">Correct / सही<br><span id="hwScoreMsg"></span></div>
+</div>
+<div class="hwday">📅 Day 1 — て-form Conjugation</div>
+<div class="hwtasks" id="hw1"></div>
+<div class="hwday">📅 Day 2 — Choose the Particle</div>
+<div class="hwtasks" id="hw2"></div>
+<div class="hwday">📅 Day 3 — Tool Names</div>
+<div class="hwtasks" id="hw3"></div>
+<div class="hwday">📅 Day 4 — Translate the Sentence</div>
+<div class="hwtasks" id="hw4"></div>
+<div class="hw-btns">
+  <button class="hw-btn primary" onclick="checkAllHW()">✓ CHECK ALL / सबै जाँच्नुस्</button>
+  <button class="hw-btn secondary" onclick="resetHW()">↺ RESET / फेरि गर्नुस्</button>
+</div>
+</section>
+
+<!-- ===== CHEATSHEET ===== -->
+<section id="cheatsheet" class="sec">
+<div class="stitle">Quick <span>Reference</span></div>
+<div class="ssub">Print-friendly reference sheet — carry it every day / छाप्न मिल्ने — हरेक दिन लिएर जानुस्</div>
+<div class="ccols">
+<div>
+<div class="cbox">
+<div class="cbtitle">て-form Rules</div>
+<div class="crow"><span class="cjp">く → いて</span><span class="cen">引く→引いて (pull)</span></div>
+<div class="crow"><span class="cjp">ぐ → いで</span><span class="cen">泳ぐ→泳いで</span></div>
+<div class="crow"><span class="cjp">す → して</span><span class="cen">直す→直して (fix)</span></div>
+<div class="crow"><span class="cjp">つ → って</span><span class="cen">打つ→打って (hit)</span></div>
+<div class="crow"><span class="cjp">る → って</span><span class="cen">切る→切って (cut)</span></div>
+<div class="crow"><span class="cjp">う → って</span><span class="cen">買う→買って</span></div>
+<div class="crow"><span class="cjp">ぬ/ぶ/む → んで</span><span class="cen">運ぶ→運んで (carry)</span></div>
+<div class="crow"><span class="cjp">Ru-verb: る→て</span><span class="cen">付ける→付けて</span></div>
+</div>
+<div class="cbox" style="margin-top:1rem;">
+<div class="cbtitle">Key Sentence Patterns</div>
+<div class="crow"><span class="cjp">～てください</span><span class="cen">Please do ~</span></div>
+<div class="crow"><span class="cjp">～ています</span><span class="cen">Doing ~ now</span></div>
+<div class="crow"><span class="cjp">～てから</span><span class="cen">After doing ~</span></div>
+<div class="crow"><span class="cjp">～ておく</span><span class="cen">Do ~ in advance</span></div>
+<div class="crow"><span class="cjp">～たら</span><span class="cen">If ~ / When ~</span></div>
+<div class="crow"><span class="cjp">～ません</span><span class="cen">Polite negative</span></div>
+<div class="crow"><span class="cjp">～ましたか</span><span class="cen">Did you ~?</span></div>
+<div class="crow"><span class="cjp">～てもらえますか</span><span class="cen">Could you ~ for me?</span></div>
+</div>
+</div>
+<div>
+<div class="cbox">
+<div class="cbtitle">Carpentry Vocabulary</div>
+<div class="crow"><span class="cjp">木材 もくざい</span><span><span class="cen">lumber</span> <span class="cne">काठ</span></span></div>
+<div class="crow"><span class="cjp">のこぎり</span><span><span class="cen">hand saw</span> <span class="cne">आरी</span></span></div>
+<div class="crow"><span class="cjp">まるのこ</span><span><span class="cen">circular saw</span> <span class="cne">गोलाकार आरी</span></span></div>
+<div class="crow"><span class="cjp">金槌 かなづち</span><span><span class="cen">hammer</span> <span class="cne">हथौडा</span></span></div>
+<div class="crow"><span class="cjp">クギ</span><span><span class="cen">nail</span> <span class="cne">कील</span></span></div>
+<div class="crow"><span class="cjp">ネジ</span><span><span class="cen">screw / bolt</span> <span class="cne">स्क्रु</span></span></div>
+<div class="crow"><span class="cjp">板 いた</span><span><span class="cen">board / plank</span> <span class="cne">तख्ता</span></span></div>
+<div class="crow"><span class="cjp">現場 げんば</span><span><span class="cen">work site</span> <span class="cne">कार्यस्थल</span></span></div>
+<div class="crow"><span class="cjp">職長 しょくちょう</span><span><span class="cen">foreman</span> <span class="cne">फोरम्यान</span></span></div>
+<div class="crow"><span class="cjp">安全 あんぜん</span><span><span class="cen">safety</span> <span class="cne">सुरक्षा</span></span></div>
+<div class="crow"><span class="cjp">確認 かくにん</span><span><span class="cen">check / confirm</span> <span class="cne">जाँच्नु</span></span></div>
+<div class="crow"><span class="cjp">作業 さぎょう</span><span><span class="cen">work / task</span> <span class="cne">काम</span></span></div>
+<div class="crow"><span class="cjp">すいへいき</span><span><span class="cen">spirit level</span> <span class="cne">लेभल</span></span></div>
+<div class="crow"><span class="cjp">さしがね</span><span><span class="cen">try square</span> <span class="cne">कोण नाप्ने</span></span></div>
+</div>
+<div class="cbox" style="margin-top:1rem;">
+<div class="cbtitle">Particles — Quick Reference</div>
+<div class="crow"><span class="cjp">は</span><span><span class="cen">topic marker</span></span></div>
+<div class="crow"><span class="cjp">が</span><span><span class="cen">subject marker</span></span></div>
+<div class="crow"><span class="cjp">を</span><span><span class="cen">direct object</span></span></div>
+<div class="crow"><span class="cjp">に</span><span><span class="cen">direction / time / exists at</span></span></div>
+<div class="crow"><span class="cjp">で</span><span><span class="cen">place of action / tool</span></span></div>
+<div class="crow"><span class="cjp">と</span><span><span class="cen">with (person) / and</span></span></div>
+<div class="crow"><span class="cjp">も</span><span><span class="cen">also / too</span></span></div>
+<div class="crow"><span class="cjp">の</span><span><span class="cen">possessive ('s)</span></span></div>
+<div class="crow"><span class="cjp">か</span><span><span class="cen">question marker</span></span></div>
+</div>
+</div>
+</div>
+</section>
+</main>
+
+<script>
+// NAV
+function show(id,btn){
+  document.querySelectorAll('.sec').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+  if(id==='quiz')startQuiz();
+  if(id==='homework')buildHW();
+  if(id==='hiragana')buildHira();
+  if(id==='kanji')buildKanji();
+  if(id==='tools')buildTools();
+}
+
+// TOOLS DATA
+const TOOLS=[
+  {jp:'ホームタイ',roma:'hōmutai',en:'Formwork tie tool',ne:'फर्मवर्क बाँध्ने औजार',use:'Used to assemble and disassemble concrete formwork ties.'},img:'https://n-tekkou.com/site2/wp-content/uploads/2018/11/6ad63bf489504abb1ed7f6dd7e1857c5-480x310.jpg'},
+  {jp:'コッパ',roma:'koppa',en:'Short scrap wood',ne:'छोटो काठको टुक्रा',use:'Small wood piece used in detail formwork work.'},img:'https://i0.wp.com/www.tidyfoxden.com/wp-content/uploads/2024/05/907F17F9-E88A-460A-9ADB-927AA94A9F68_1_105_c-2.jpeg?w=1024&ssl=1'},
+  {jp:'インパクト',roma:'inpakuto',en:'Impact driver (Makita)',ne:'इम्प्याक्ट ड्रिल',use:'Battery-powered. Change bits for different tasks. For screws and drilling.'},img:'https://www.makita.co.jp/app/img_product/TD002GRDX.png?2026529'},
+  {jp:'チェーン',roma:'chēn',en:'Chain',ne:'चेन / साङ्लो',use:'Used to tie, pull or secure construction materials and elements.'},img:'https://satochemical.co.jp/wp-content/uploads/product-images/160385-01-7.jpg'},
+  {jp:'げんのう',roma:'gennō',en:'Japanese hammer',ne:'जापानी हथौडा',use:'Special hammer for driving and removing nails. A core carpentry tool.'},img:'https://image.rakuten.co.jp/yoitariki/cabinet/4953673/4953673048007_6.jpg'},
+  {jp:'ターンバックル',roma:'tānbakkuru',en:'Turnbuckle',ne:'टर्नबकल',use:'Adjustable connector with two ends. Used to tighten cables and rods in formwork.'},img:'https://monotool-plus.com/cdn/shop/files/turnbuckle-hh-bk.jpg?v=1699272463&width=1800'},
+  {jp:'てのこ',roma:'te no ko',en:'Hand saw',ne:'हातले प्रयोग गर्ने आरी',use:'Hand-operated saw. Used for fine cuts and adjustments.'},img:'https://file.shokunin-san.com/sys_img/catalog/4010/1_l.jpg?v=1568029198'},
+  {jp:'まるのこ',roma:'maru no ko',en:'Circular saw (electric)',ne:'गोलाकार आरी (बिजुली)',use:'Electric circular saw. Used heavily in formwork. Learn correct usage carefully!'},img:'https://img10.shop-pro.jp/PA01047/230/product/87629230.jpg?20150307203040'},
+  {jp:'きり',roma:'kiri',en:'Awl / hand drill',ne:'हाते बोरिङ औजार',use:'Used to make small holes. A hand tool for fine boring.'}, img:'https://makeshop-multi-images.akamaized.net/aiko2/itemimages/000000004139_8AJdwJp.jpg'},
+  {jp:'けれんぼう',roma:'kerenbō',en:'Wrecking bar / pry bar',ne:'खोल्ने छड',use:'Used to pry, open gaps, and demolish formwork corners.'},
+  {jp:'さげふり',roma:'sagefuri',en:'Plumb bob',ne:'ठाडो नाप्ने औजार',use:'Used to check vertical alignment of formwork.'},img:'https://jp.images-monotaro.com/Monotaro3/pi/highreso/mono60840902-211126-02.jpg'},
+  {jp:'さしがね',roma:'sashigane',en:'Try square / carpenter\'s square',ne:'कोण नाप्ने औजार',use:'Used to measure and hold right angles.'},img:'https://www.acry-ya.com/assets/images/projects/diy_guide/prepare/kougu03.jpg'}
+  {jp:'さんくらんぷ',roma:'sankuranpu',en:'Clamp (san clamp)',ne:'क्ल्याम्प',use:'A clamp used to secure formwork panels.'},img:'https://kunimoto-s.co.jp/images/uploads/2017/06/9000254-530x530.jpg'},
+  {jp:'しめつけビット',roma:'shimetsuke bitto',en:'Tightening bit',ne:'कस्ने बिट',use:'Fitted to impact driver. Used to tighten screws.'},img:'https://image.rakuten.co.jp/auc-estoah/cabinet/image24/ko5470-hys.jpg'},
+  {jp:'すいへいき',roma:'suiheiki',en:'Spirit level',ne:'लेभल (समतल नाप्ने)',use:'Use as long a level as possible for formwork accuracy.'},img:'https://m.media-amazon.com/images/I/61ryIyvrCVL._AC_SX679_.jpg'},
+  {jp:'すける',roma:'sukēru',en:'Tape measure / ruler',ne:'टेप मापन',use:'Many types available. The most common tool.'},img:'https://i.sstatic.net/h8LXn.jpg'},  
+  {jp:'すみつぼ',roma:'sumitsubo',en:'Chalk line / ink line',ne:'रेखा खिच्ने औजार',use:'Used to mark lines on wood, steel, concrete.'},img:'https://shop.r10s.jp/sindoukanamono/cabinet/05558031/imgrc0073143306.jpg'},
+  {jp:'てっぽう',roma:'teppō',en:'Nail gun',ne:'कील ठोक्ने मेसिन',use:'Automatic nail driving machine.'},  
+  {jp:'えんちょうこうどう',roma:'enchō kōdō',en:'Extension cord',ne:'एक्स्टेन्सन तार',use:'Used to extend electric power cables.'},img:'https://m.media-amazon.com/images/I/71al+AwycjL._AC_SY300_SX300_QL70_ML2_.jpg'},
+  {jp:'ホース',roma:'hōsu',en:'Air hose',ne:'हवा पाइप',use:'Hose connecting air-powered tools.'},img:'https://www.nailgundepot.com/media/catalog/product/cache/96690dc2b8ce982d9d7054db34078d7c/p/f/pfe4050ts15x.jpg'},
+];
+
+let toolsBuilt=false;
+function buildTools(){
+  if(toolsBuilt)return;toolsBuilt=true;
+  const g=document.getElementById('toolGrid');
+  g.innerHTML=TOOLS.map((t,i)=>`<div class="tool-card" id="tc_${i}" onclick="flipCard(${i})">
+    <div class="tc-front">
+      <div class="tc-img-placeholder" style="height:120px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#e8e0d0,#C4956A);">
+        <span style="font-family:'Noto Sans JP',sans-serif;font-size:2rem;font-weight:900;color:#4A2E0A;">${t.jp}</span>
+      </div>
+      <div class="tc-body">
+        <div class="tc-jp">${t.jp}</div>
+        <div class="tc-roma">${t.roma}</div>
+        <div class="tc-en">${t.en}</div>
+        <div class="tc-ne">${t.ne}</div>
+        <div class="tc-use" style="font-size:.68rem;">${t.use}</div>
+      </div>
+      <div class="tc-flip-hint">▶ click for more</div>
+    </div>
+    <div class="tc-back">
+      <div class="tcb-jp">${t.jp}</div>
+      <div class="tcb-roma">${t.roma}</div>
+      <div class="tcb-en">${t.en}</div>
+      <div class="tcb-ne">${t.ne}</div>
+      <div class="tcb-use">${t.use}</div>
+    </div>
+  </div>`).join('');
+}
+function flipCard(i){document.getElementById('tc_'+i).classList.toggle('flipped');}
+
+// KANJI
+const KANJI=[
+  {k:'木',on:'ボク・モク',kun:'き',en:'Tree / Wood',ne:'रुख / काठ',ex:[{jp:'木材',roma:'mokuzai',en:'lumber',ne:'काठ'},{jp:'大工',roma:'daiku',en:'carpenter',ne:'सुतार'}]},
+  {k:'大',on:'ダイ・タイ',kun:'おお',en:'Big / Large',ne:'ठूलो / महान',ex:[{jp:'大工',roma:'daiku',en:'carpenter',ne:'सुतार'},{jp:'大きい',roma:'ōkii',en:'big',ne:'ठूलो'}]},
+  {k:'工',on:'コウ・ク',kun:'',en:'Work / Craft',ne:'काम / शिल्प',ex:[{jp:'大工',roma:'daiku',en:'carpenter',ne:'सुतार'},{jp:'工事',roma:'kōji',en:'construction work',ne:'निर्माण काम'},{jp:'工具',roma:'kōgu',en:'tool',ne:'औजार'}]},
+  {k:'上',on:'ジョウ',kun:'うえ・あ',en:'Above / Up',ne:'माथि / माथि जाने',ex:[{jp:'上に',roma:'ue ni',en:'above',ne:'माथि'},{jp:'上がる',roma:'agaru',en:'go up',ne:'माथि जानु'}]},
+  {k:'下',on:'カ・ゲ',kun:'した・さ',en:'Below / Down',ne:'तल / तल जाने',ex:[{jp:'下に',roma:'shita ni',en:'below',ne:'तल'},{jp:'下がる',roma:'sagaru',en:'go down',ne:'तल जानु'}]},
+  {k:'切',on:'セツ',kun:'き',en:'Cut',ne:'काट्नु',ex:[{jp:'切る',roma:'kiru',en:'to cut',ne:'काट्नु'},{jp:'切って',roma:'kitte',en:'cutting (て-form)',ne:'काटेर'},{jp:'木を切る',roma:'ki wo kiru',en:'cut wood',ne:'काठ काट्नु'}]},
+  {k:'安',on:'アン',kun:'やす',en:'Safe / Peaceful',ne:'सुरक्षित / शान्त',ex:[{jp:'安全',roma:'anzen',en:'safety',ne:'सुरक्षा'},{jp:'安全帯',roma:'anzentai',en:'safety harness',ne:'सुरक्षा पट्टा'}]},
+  {k:'全',on:'ゼン',kun:'まった',en:'Complete / All',ne:'पूर्ण / सबै',ex:[{jp:'安全',roma:'anzen',en:'safety',ne:'सुरक्षा'},{jp:'全部',roma:'zenbu',en:'everything',ne:'सबै'}]},
+  {k:'作',on:'サク・サ',kun:'つく',en:'Make / Create',ne:'बनाउनु',ex:[{jp:'作業',roma:'sagyō',en:'work / task',ne:'काम'},{jp:'作る',roma:'tsukuru',en:'to make',ne:'बनाउनु'}]},
+  {k:'現',on:'ゲン',kun:'あらわ',en:'Present / Current',ne:'हालको / अहिले',ex:[{jp:'現場',roma:'genba',en:'work site',ne:'कार्यस्थल'},{jp:'現在',roma:'genzai',en:'currently',ne:'हाल'}]},
+  {k:'場',on:'ジョウ・バ',kun:'ば',en:'Place / Site',ne:'स्थान',ex:[{jp:'現場',roma:'genba',en:'work site',ne:'कार्यस्थल'},{jp:'作業場',roma:'sagyōba',en:'workplace',ne:'कार्यस्थल'}]},
+  {k:'確',on:'カク',kun:'たし',en:'Certain / Sure',ne:'निश्चित',ex:[{jp:'確認',roma:'kakunin',en:'check / confirm',ne:'जाँच्नु'},{jp:'確認する',roma:'kakunin suru',en:'to confirm',ne:'पक्का गर्नु'}]},
+  {k:'長',on:'チョウ',kun:'なが',en:'Long / Chief',ne:'लामो / प्रमुख',ex:[{jp:'職長',roma:'shokuchō',en:'foreman',ne:'फोरम्यान'},{jp:'長い',roma:'nagai',en:'long',ne:'लामो'}]},
+  {k:'見',on:'ケン',kun:'み',en:'See / Look',ne:'हेर्नु',ex:[{jp:'見る',roma:'miru',en:'to look',ne:'हेर्नु'},{jp:'確認する',roma:'kakunin suru',en:'to check',ne:'जाँच्नु'}]},
+];
+
+let kanjiBuilt=false;
+function buildKanji(){
+  if(kanjiBuilt)return;kanjiBuilt=true;
+  document.getElementById('kanjiGrid').innerHTML=KANJI.map(k=>`
+    <div class="kanji-card">
+      <div class="kanji-char">${k.k}</div>
+      <div class="kanji-info">
+        <div class="kanji-read">音: <strong>${k.on}</strong> ｜ 訓: <strong>${k.kun||'—'}</strong></div>
+        <div class="kanji-en">${k.en}</div>
+        <div class="kanji-ne">${k.ne}</div>
+        <div class="kanji-examples">
+          ${k.ex.map(e=>`<div class="kanji-ex"><span class="kex-jp">${e.jp}</span> <span class="kex-en">— ${e.en}</span> <span class="kex-ne">/ ${e.ne}</span></div>`).join('')}
+        </div>
+      </div>
+    </div>`).join('');
+}
+
+// HIRAGANA
+const HIRA_DATA={
+  'Basic 46 Characters — आधारभूत ४६ अक्षर':[
+    ['あ','a'],['い','i'],['う','u'],['え','e'],['お','o'],
+    ['か','ka'],['き','ki'],['く','ku'],['け','ke'],['こ','ko'],
+    ['さ','sa'],['し','shi'],['す','su'],['せ','se'],['そ','so'],
+    ['た','ta'],['ち','chi'],['つ','tsu'],['て','te'],['と','to'],
+    ['な','na'],['に','ni'],['ぬ','nu'],['ね','ne'],['の','no'],
+    ['は','ha'],['ひ','hi'],['ふ','fu'],['へ','he'],['ほ','ho'],
+    ['ま','ma'],['み','mi'],['む','mu'],['め','me'],['も','mo'],
+    ['や','ya'],['　',''],['ゆ','yu'],['　',''],['よ','yo'],
+    ['ら','ra'],['り','ri'],['る','ru'],['れ','re'],['ろ','ro'],
+    ['わ','wa'],['　',''],['　',''],['　',''],['を','wo'],
+    ['ん','n'],
+  ],
+  'Voiced Sounds — हल्का आवाज (濁音)':[
+    ['が','ga'],['ぎ','gi'],['ぐ','gu'],['げ','ge'],['ご','go'],
+    ['ざ','za'],['じ','ji'],['ず','zu'],['ぜ','ze'],['ぞ','zo'],
+    ['だ','da'],['ぢ','ji'],['づ','zu'],['で','de'],['ど','do'],
+    ['ば','ba'],['び','bi'],['ぶ','bu'],['べ','be'],['ぼ','bo'],
+    ['ぱ','pa'],['ぴ','pi'],['ぷ','pu'],['ぺ','pe'],['ぽ','po'],
+  ],
+  'Combination Sounds — संयुक्त ध्वनि (拗音)':[
+    ['きゃ','kya'],['きゅ','kyu'],['きょ','kyo'],
+    ['しゃ','sha'],['しゅ','shu'],['しょ','sho'],
+    ['ちゃ','cha'],['ちゅ','chu'],['ちょ','cho'],
+    ['にゃ','nya'],['にゅ','nyu'],['にょ','nyo'],
+    ['ひゃ','hya'],['ひゅ','hyu'],['ひょ','hyo'],
+    ['みゃ','mya'],['みゅ','myu'],['みょ','myo'],
+    ['りゃ','rya'],['りゅ','ryu'],['りょ','ryo'],
+    ['ぎゃ','gya'],['ぎゅ','gyu'],['ぎょ','gyo'],
+    ['じゃ','ja'],['じゅ','ju'],['じょ','jo'],
+    ['びゃ','bya'],['びゅ','byu'],['びょ','byo'],
+    ['ぴゃ','pya'],['ぴゅ','pyu'],['ぴょ','pyo'],
+  ]
+};
+let hiraBuilt=false;
+function buildHira(){
+  if(hiraBuilt)return;hiraBuilt=true;
+  let html='';
+  for(const [group,chars] of Object.entries(HIRA_DATA)){
+    html+=`<div class="hira-group"><div class="hira-group-title">${group}</div><div class="hira-row">`;
+    chars.forEach(([h,r])=>{
+      if(!h.trim()){html+=`<div style="width:68px"></div>`;return;}
+      const cls=group.includes('Voiced')?'voiced':group.includes('Combination')?'combo':'';
+      html+=`<div class="hira-card ${cls}"><div class="hc">${h}</div><div class="hr">${r}</div></div>`;
+    });
+    html+='</div></div>';
+  }
+  document.getElementById('hiraGrid').innerHTML=html;
+}
+
+// QUIZ DATA
+const QDB={
+  tools:[
+    {t:'Tool',q:'まるのこ',qr:'まるのこ',en:'Choose the English meaning',ne:'अर्थ रोज्नुस्',a:'Circular saw (electric)',o:['Circular saw (electric)','Nail gun','Spirit level','Hammer'],e:'まるのこ = circular electric saw. Used heavily in formwork. / गोलाकार बिजुली आरी।'},
+    {t:'Tool',q:'てっぽう',qr:'てっぽう',en:'Choose the English meaning',ne:'अर्थ रोज्नुस्',a:'Nail gun',o:['Nail gun','Awl','Impact driver','Hammer'],e:'てっぽう = nail gun (automatic nail driver). / स्वचालित कील ठोक्ने मेसिन।'},
+    {t:'Tool',q:'てのこ',qr:'てのこ',en:'Choose the English meaning',ne:'अर्थ रोज्नुस्',a:'Hand saw',o:['Hand saw','Circular saw','Spirit level','Tape measure'],e:'てのこ = hand-operated saw. / हातले प्रयोग गर्ने आरी।'},
+    {t:'Tool',q:'げんのう',qr:'げんのう',en:'Choose the English meaning',ne:'अर्थ रोज्नुस्',a:'Japanese hammer',o:['Japanese hammer','Pry bar','Saw','Awl'],e:'げんのう = special Japanese hammer for nails. / कील ठोक्ने जापानी हथौडा।'},
+    {t:'Tool',q:'すいへいき',qr:'すいへいき',en:'Choose the English meaning',ne:'अर्थ रोज्नुस्',a:'Spirit level',o:['Spirit level','Tape measure','Plumb bob','Try square'],e:'すいへいき = spirit level (समतल नाप्ने)।'},
+    {t:'Tool',q:'インパクト',qr:'いんぱくと',en:'Choose the English meaning',ne:'अर्थ रोज्नुस्',a:'Impact driver',o:['Impact driver','Nail gun','Spirit level','Drill'],e:'インパクト = battery-powered impact driver. / इम्प्याक्ट ड्रिल।'},
+    {t:'Tool',q:'さしがね',qr:'さしがね',en:'Choose the English meaning',ne:'अर्थ रोज्नुस्',a:'Try square',o:['Try square','Spirit level','Tape measure','Plumb bob'],e:'さしがね = carpenter\'s square / try square. / कोण नाप्ने औजार।'},
+    {t:'Tool',q:'さげふり',qr:'さげふり',en:'Choose the English meaning',ne:'अर्थ रोज्नुस्',a:'Plumb bob',o:['Plumb bob','Spirit level','Try square','Tape measure'],e:'さげふり = plumb bob (vertical alignment). / ठाडो नाप्ने औजार।'},
+  ],
+  kanji:[
+    {t:'Kanji',q:'大工',qr:'だいく',en:'Choose the English meaning',ne:'अर्थ रोज्नुस्',a:'Carpenter',o:['Carpenter','Work site','Tool','Construction work'],e:'大工 (だいく) = carpenter. 大=big, 工=work. / सुतार।'},
+    {t:'Kanji',q:'現場',qr:'げんば',en:'Choose the English meaning',ne:'अर्थ रोज्नुस्',a:'Work site',o:['Work site','Foreman','Construction work','Tool'],e:'現場 (げんば) = work site. 現=present, 場=place. / कार्यस्थल।'},
+    {t:'Kanji',q:'安全',qr:'あんぜん',en:'Choose the English meaning',ne:'अर्थ रोज्नुस्',a:'Safety',o:['Safety','Check','Foreman','Work'],e:'安全 (あんぜん) = safety. / सुरक्षा।'},
+    {t:'Kanji',q:'作業',qr:'さぎょう',en:'Choose the English meaning',ne:'अर्थ रोज्नुस्',a:'Work / Task',o:['Work / Task','Safety','Measure','Check'],e:'作業 (さぎょう) = work / task. / काम।'},
+    {t:'Kanji',q:'確認',qr:'かくにん',en:'Choose the English meaning',ne:'अर्थ रोज्नुस्',a:'Check / Confirm',o:['Check / Confirm','Work','Cut','Work site'],e:'確認 (かくにん) = check / confirm. / जाँच्नु।'},
+    {t:'Kanji',q:'職長',qr:'しょくちょう',en:'Choose the English meaning',ne:'अर्थ रोज्नुस्',a:'Foreman',o:['Foreman','Carpenter','Worker','Work site'],e:'職長 (しょくちょう) = foreman / site leader. / फोरम्यान।'},
+    {t:'Kanji',q:'木材',qr:'もくざい',en:'Choose the English meaning',ne:'अर्थ रोज्नुस्',a:'Lumber / Wood',o:['Lumber / Wood','Nail','Board','Formwork'],e:'木材 (もくざい) = lumber / construction wood. / काठ।'},
+  ],
+  verbs:[
+    {t:'Verb',q:'切る → て-form?',qr:'きる → て-form?',en:'What is the て-form of "to cut"?',ne:'"काट्नु" को て-form के हो?',a:'きって',o:['きって','きりて','きいて','きんで'],e:'切る (きる) is a U-verb. つ/る/う→って: きる→きって. / काट्नु को て रूप: きって।'},
+    {t:'Verb',q:'運ぶ → て-form?',qr:'はこぶ → て-form?',en:'What is the て-form of "to carry"?',ne:'"बोक्नु" को て-form के हो?',a:'はこんで',o:['はこんで','はこいて','はこって','はこびて'],e:'運ぶ (はこぶ): ぬ/ぶ/む→んで: はこぶ→はこんで. / बोक्नु को て रूप: はこんで।'},
+    {t:'Verb',q:'調べる → て-form?',qr:'しらべる → て-form?',en:'What is the て-form of "to check"?',ne:'"जाँच्नु" को て-form के हो?',a:'しらべて',o:['しらべて','しらべって','しらべいて','しらべんで'],e:'調べる (しらべる) is a Ru-verb. Drop る, add て: しらべる→しらべて. / जाँच्नु को て रूप: しらべて।'},
+    {t:'Verb',q:'直す → て-form?',qr:'なおす → て-form?',en:'What is the て-form of "to fix"?',ne:'"मर्मत गर्नु" को て-form के हो?',a:'なおして',o:['なおして','なおいて','なおって','なおさて'],e:'直す (なおす): す→して: なおす→なおして. / मर्मत गर्नु को て रूप: なおして।'},
+    {t:'Verb',q:'する → て-form?',qr:'する → て-form?',en:'What is the て-form of "to do"?',ne:'"गर्नु" को て-form के हो?',a:'して',o:['して','すて','しいて','します'],e:'する is irregular. する→して. Memorize! / गर्नु को て रूप: して।'},
+    {t:'Verb',q:'来る → て-form?',qr:'くる → て-form?',en:'What is the て-form of "to come"?',ne:'"आउनु" को て-form के हो?',a:'きて',o:['きて','くて','こて','きって'],e:'来る (くる) is irregular. くる→きて. / आउनु को て रूप: きて।'},
+    {t:'Verb',q:'切る → ない-form?',qr:'きる → ない-form?',en:'Negative form of "to cut"?',ne:'"काट्नु" को नकारात्मक रूप?',a:'きらない',o:['きらない','きりない','きなない','きえない'],e:'U-verb ない-form: る→ら + ない: きる→きらない. / काट्दैन।'},
+    {t:'Verb',q:'測る → た-form?',qr:'はかる → た-form?',en:'Past tense of "to measure"?',ne:'"नाप्नु" को भूतकाल?',a:'はかった',o:['はかった','はかりた','はかいた','はかんだ'],e:'測る (はかる): る→った: はかる→はかった. / नापियो।'},
+  ],
+  particles:[
+    {t:'Particle',q:'のこぎり＿＿きをきります',qr:'のこぎり＿＿きをきります',en:'I cut wood ___ a saw. (tool)',ne:'आरी___ काठ काट्छु। (औजार)',a:'で',o:['で','に','を','と'],e:'で = marks tool / method. のこぎりで = by/with a saw. / आरीले।'},
+    {t:'Particle',q:'いた＿＿きってください',qr:'いた＿＿きってください',en:'Please cut ___ board. (object)',ne:'___ बोर्ड काट्नुहोस्। (वस्तु)',a:'を',o:['を','は','に','で'],e:'を = direct object marker. いたを = cut the board. / बोर्डलाई।'},
+    {t:'Particle',q:'どうぐばこ＿＿こうぐがあります',qr:'どうぐばこ＿＿こうぐがあります',en:'Tools exist ___ the toolbox. (existence location)',ne:'औजारबाकस___ सामान छ।',a:'に',o:['に','で','が','は'],e:'に = where something EXISTS (with あります). / अवस्थिति जनाउँछ।'},
+    {t:'Particle',q:'しょくちょう＿＿はなします',qr:'しょくちょう＿＿はなします',en:'I talk ___ the foreman. (with person)',ne:'फोरम्यान___ कुरा गर्छु।',a:'と',o:['と','に','で','へ'],e:'と = together with a person. / सँग।'},
+    {t:'Particle',q:'やね＿＿のぼります',qr:'やね＿＿のぼります',en:'I go up ___ the roof. (direction)',ne:'छाना___ चढ्छु। (दिशा)',a:'に',o:['に','で','が','を'],e:'に = direction of movement. やねに = toward the roof. / छानातिर।'},
+    {t:'Particle',q:'げんば＿＿さぎょうします',qr:'げんば＿＿さぎょうします',en:'I work ___ the site. (place of action)',ne:'कार्यस्थल___ काम गर्छु।',a:'で',o:['で','に','が','は'],e:'で = where ACTION happens. げんばで = at the work site. / कार्यस्थलमा।'},
+    {t:'Particle',q:'かいしゃ＿＿どうぐです',qr:'かいしゃ＿＿どうぐです',en:'It is ___ company\'s tool. (possession)',ne:'कम्पनी___ औजार हो।',a:'の',o:['の','が','は','で'],e:'の = possessive (like \'s in English). かいしゃの = company\'s. / को।'},
+    {t:'Particle',q:'かくにんして＿＿すすめます',qr:'かくにんして＿＿すすめます',en:'I proceed ___ checking. (after doing)',ne:'जाँचेपछि अगाडि बढ्छु।',a:'から',o:['から','ので','けど','まで'],e:'て+から = after doing ~. / जाँचेपछि।'},
+  ],
+  hira:[
+    {t:'Hiragana',q:'き',qr:'き',en:'Read this character',ne:'यो अक्षर पढ्नुस्',a:'ki',o:['ki','si','ri','hi'],e:'き = ki. Example: きる (cut), きって (て-form). / काट्नु।'},
+    {t:'Hiragana',q:'て',qr:'て',en:'Read this character',ne:'यो अक्षर पढ्नुस्',a:'te',o:['te','de','ke','he'],e:'て = te. Very important for て-form! / て रूपमा महत्त्वपूर्ण।'},
+    {t:'Hiragana',q:'す',qr:'す',en:'Read this character',ne:'यो अक्षर पढ्नुस्',a:'su',o:['su','nu','fu','ru'],e:'す = su. Example: すける (tape measure). / मापन टेप।'},
+    {t:'Hiragana',q:'ら',qr:'ら',en:'Read this character',ne:'यो अक्षर पढ्नुस्',a:'ra',o:['ra','la','wa','na'],e:'ら = ra. Example: きらない (don\'t cut). / काट्दैन।'},
+    {t:'Hiragana',q:'な',qr:'な',en:'Read this character',ne:'यो अक्षर पढ्नुस्',a:'na',o:['na','ma','ha','ka'],e:'な = na. Example: ～ない (negative ending). / नकारात्मक।'},
+    {t:'Hiragana',q:'ん',qr:'ん',en:'Read this character',ne:'यो अक्षर पढ्नुस्',a:'n',o:['n','mu','nu','no'],e:'ん = n. Example: はこんで (hakonde = carrying). / बोकेर।'},
+    {t:'Hiragana',q:'つ',qr:'つ',en:'Read this character',ne:'यो अक्षर पढ्नुस्',a:'tsu',o:['tsu','chi','su','shi'],e:'つ = tsu. Example: うつ (hit). / ठोक्नु।'},
+    {t:'Hiragana',q:'し',qr:'し',en:'Read this character',ne:'यो अक्षर पढ्नुस्',a:'shi',o:['shi','si','chi','ji'],e:'し = shi (NOT "si"!). Example: して (doing). / गरेर।'},
+    {t:'Hiragana',q:'は',qr:'は',en:'Read this character',ne:'यो अक्षर पढ्नुस्',a:'ha (wa as particle)',o:['ha (wa as particle)','ba','pa','ka'],e:'は = ha. As a particle it is read "wa". / कारक रूपमा "wa"।'},
+    {t:'Hiragana',q:'を',qr:'を',en:'Read this character',ne:'यो अक्षर पढ्नुस्',a:'wo (o)',o:['wo (o)','wa','ho','mo'],e:'を = wo (o). Object marker particle. / वस्तु जनाउने कारक।'},
+  ]
+};
+
+let curQSet='all',cur=0,sc=0,res=[],activeQ=[];
+function selectQSet(set,btn){
+  curQSet=set;
+  document.querySelectorAll('.qtab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  startQuiz();
+}
+function getQSet(){
+  if(curQSet==='all'){
+    let all=[...QDB.tools,...QDB.kanji,...QDB.verbs,...QDB.particles,...QDB.hira];
+    return shuffle(all).slice(0,30);
+  }
+  return shuffle([...QDB[curQSet]]);
+}
+function shuffle(a){return a.sort(()=>Math.random()-.5);}
+function startQuiz(){
+  activeQ=getQSet();cur=0;sc=0;res=[];
+  document.getElementById('qscore').classList.remove('show');
+  document.getElementById('qcard').style.display='flex';
+  document.getElementById('qopts').style.display='grid';
+  document.getElementById('qnext').classList.remove('show');
+  document.getElementById('qfb').classList.remove('show','okfb','badfb');
+  renderQ();
+}
+function renderQ(){
+  const q=activeQ[cur];
+  document.getElementById('qprog').innerHTML=activeQ.map((_,i)=>{
+    let c=i<cur?(res[i]?'done':'bad'):i===cur?'cur':'';
+    return`<div class="qpip ${c}"></div>`;
+  }).join('');
+  const readLine=q.qr&&q.qr!==q.q?`<div style="font-family:'Noto Sans JP',sans-serif;font-size:.9rem;color:var(--wood);margin-bottom:.2rem;">(${q.qr})</div>`:'';
+  document.getElementById('qcard').innerHTML=`<div class="qtype">${q.t}</div><div class="qqjp">${q.q}</div>${readLine}<div class="qqen">${q.en}</div><div class="qqne">${q.ne}</div>`;
+  const shuffled=shuffle([...q.o]);
+  document.getElementById('qopts').innerHTML=shuffled.map(o=>`<button class="qopt" onclick="pick(this,'${o.replace(/'/g,"\\'")}')"><span>${o}</span></button>`).join('');
+  document.getElementById('qfb').classList.remove('show','okfb','badfb');
+  document.getElementById('qnext').classList.remove('show');
+}
+function pick(el,chosen){
+  const q=activeQ[cur];const ok=chosen===q.a;
+  if(ok)sc++;res[cur]=ok;
+  document.querySelectorAll('.qopt').forEach(b=>{
+    b.onclick=null;
+    const txt=b.querySelector('span').textContent.trim();
+    if(txt===q.a)b.classList.add('ok');
+    else if(txt===chosen&&!ok)b.classList.add('bad');
+  });
+  const fb=document.getElementById('qfb');
+  fb.className='qfb show '+(ok?'okfb':'badfb');
+  fb.innerHTML=(ok?'✓ Correct! सही! — ':'✗ Wrong. Answer: ')+`<strong>${q.a}</strong> — ${q.e}`;
+  document.getElementById('qnext').classList.add('show');
+}
+function nextQ(){cur++;if(cur>=activeQ.length)showScore();else renderQ();}
+function showScore(){
+  document.getElementById('qcard').style.display='none';
+  document.getElementById('qopts').style.display='none';
+  document.getElementById('qnext').classList.remove('show');
+  document.getElementById('qfb').classList.remove('show');
+  document.getElementById('qscore').classList.add('show');
+  document.getElementById('snum').textContent=`${sc}/${activeQ.length}`;
+  const p=sc/activeQ.length;
+  document.getElementById('smsg').textContent=p>=.9?'Excellent! You are a site expert! / उत्कृष्ट! तपाईं विशेषज्ञ हुनुहुन्छ!':p>=.7?'Well done! / राम्रो गर्नुभयो!':p>=.5?'Not bad — keep practising! / अझ अभ्यास गर्नुस्!':'Keep studying! / अझ पढ्नुस्!';
+  document.getElementById('qprog').innerHTML=res.map(r=>`<div class="qpip ${r?'done':'bad'}"></div>`).join('');
+}
+startQuiz();
+
+// HOMEWORK
+const HWD={
+  hw1:[
+    {type:'て-form',q:'切る (きる)',en:'to cut → て-form',ne:'काट्नु → て रूप',a:['きって'],hint:'つ/る/う → って'},
+    {type:'て-form',q:'運ぶ (はこぶ)',en:'to carry → て-form',ne:'बोक्नु → て रूप',a:['はこんで'],hint:'ぬ/ぶ/む → んで'},
+    {type:'て-form',q:'調べる (しらべる)',en:'to check → て-form',ne:'जाँच्नु → て रूप',a:['しらべて'],hint:'Ru-verb: drop る, add て'},
+    {type:'て-form',q:'直す (なおす)',en:'to fix → て-form',ne:'मर्मत गर्नु → て रूप',a:['なおして'],hint:'す → して'},
+    {type:'て-form',q:'打つ (うつ)',en:'to hit/drive → て-form',ne:'ठोक्नु → て रूप',a:['うって'],hint:'つ → って'},
+    {type:'て-form',q:'測る (はかる)',en:'to measure → て-form',ne:'नाप्नु → て रूप',a:['はかって'],hint:'U-verb る → って'},
+  ],
+  hw2:[
+    {type:'Particle / कारक',q:'のこぎり＿＿きをきります',en:'Cut wood with a saw (___ = tool)',ne:'आरी___ काठ काट्छु (औजार)',a:['で'],hint:'Tool → で'},
+    {type:'Particle / कारक',q:'いた＿＿きってください',en:'Please cut the board (___ = object)',ne:'___ बोर्ड काट्नुहोस् (वस्तु)',a:['を'],hint:'Object → を'},
+    {type:'Particle / कारक',q:'どうぐばこ＿＿こうぐがあります',en:'Tools are in the toolbox (___ = exists at)',ne:'औजारबाकस___ सामान छ (अवस्थिति)',a:['に'],hint:'Existence location → に'},
+    {type:'Particle / कारक',q:'しょくちょう＿＿はなします',en:'Talk with the foreman (___ = with person)',ne:'फोरम्यान___ कुरा गर्छु (सँग)',a:['と'],hint:'With person → と'},
+    {type:'Particle / कारक',q:'やね＿＿のぼります',en:'Go up to the roof (___ = direction)',ne:'छाना___ चढ्छु (दिशा)',a:['に','へ'],hint:'Direction → に or へ'},
+    {type:'Particle / कारक',q:'げんば＿＿さぎょうします',en:'Work at the site (___ = place of action)',ne:'कार्यस्थल___ काम गर्छु (क्रियाको ठाउँ)',a:['で'],hint:'Place of action → で'},
+  ],
+  hw3:[
+    {type:'Tool Name / औजारको नाम',q:'Circular saw (electric)',en:'Write in Japanese (romaji ok)',ne:'जापानीमा लेख्नुस्',a:['まるのこ','maruno ko','marunoko'],hint:''},
+    {type:'Tool Name / औजारको नाम',q:'Nail gun',en:'Write in Japanese (romaji ok)',ne:'जापानीमा लेख्नुस्',a:['てっぽう','teppou','teppo'],hint:''},
+    {type:'Tool Name / औजारको नाम',q:'Spirit level',en:'Write in Japanese (romaji ok)',ne:'जापानीमा लेख्नुस्',a:['すいへいき','suiheiki'],hint:''},
+    {type:'Tool Name / औजारको नाम',q:'Hand saw',en:'Write in Japanese (romaji ok)',ne:'जापानीमा लेख्नुस्',a:['てのこ','tenoko'],hint:''},
+    {type:'Tool Name / औजारको नाम',q:'Japanese hammer',en:'Write in Japanese (romaji ok)',ne:'जापानीमा लेख्नुस्',a:['げんのう','gennou','genno'],hint:''},
+    {type:'Tool Name / औजारको नाम',q:'Impact driver',en:'Write in Japanese (romaji ok)',ne:'जापानीमा लेख्नुस्',a:['インパクト','inpakuto'],hint:'Katakana word'},
+  ],
+  hw4:[
+    {type:'Translation / अनुवाद',q:'いたをきってください。',en:'Translate to English',ne:'अनुवाद गर्नुस्',a:['please cut the board','cut the board please','cut the plank'],hint:'いた=board, きって=cutting, ください=please'},
+    {type:'Translation / अनुवाद',q:'さぎょうがおわりました。',en:'Translate to English',ne:'अनुवाद गर्नुस्',a:['the work is finished','work is done','work finished'],hint:'さぎょう=work, おわりました=finished'},
+    {type:'Translation / अनुवाद',q:'もんだいがあります。',en:'Translate to English',ne:'अनुवाद गर्नुस्',a:['there is a problem','there is an issue','we have a problem'],hint:'もんだい=problem, あります=there is'},
+    {type:'Translation / अनुवाद',q:'かくにんしてからすすめます。',en:'Translate to English',ne:'अनुवाद गर्नुस्',a:["i'll proceed after checking","will proceed after checking","proceed after checking"],hint:'かくにんして=after checking, から=then'},
+    {type:'Translation / अनुवाद',q:'ゆっくりはなしてください。',en:'Translate to English',ne:'अनुवाद गर्नुस्',a:['please speak slowly','speak slowly please','please talk slowly'],hint:'ゆっくり=slowly, はなして=speak, ください=please'},
+    {type:'Translation / अनुवाद',q:'これでいいですか？',en:'Translate to English',ne:'अनुवाद गर्नुस्',a:['is this okay','is this ok','is this alright','this is okay?'],hint:'これ=this, いい=good/okay, か=question marker'},
+  ]
+};
+let hwBuilt=false;
+function buildHW(){
+  if(hwBuilt)return;hwBuilt=true;
+  ['hw1','hw2','hw3','hw4'].forEach(id=>{
+    document.getElementById(id).innerHTML=HWD[id].map((t,i)=>`
+      <div class="hwtask" id="${id}_c_${i}">
+        <div class="hwtask-num">${i+1}</div>
+        <div class="hwtask-type">${t.type}</div>
+        <div class="hwtask-q">${t.q}</div>
+        <div class="hwtask-en">${t.en}${t.hint?` <em style="color:var(--wl);font-size:.7rem;">— hint: ${t.hint}</em>`:''}</div>
+        <div class="hwtask-ne">${t.ne}</div>
+        <input class="hwtask-input" id="${id}_i_${i}" type="text" placeholder="Write your answer here...">
+        <div class="hwtask-fb" id="${id}_f_${i}"></div>
+      </div>`).join('');
+  });
+}
+function checkAllHW(){
+  buildHW();
+  let total=0,correct=0;
+  ['hw1','hw2','hw3','hw4'].forEach(id=>{
+    HWD[id].forEach((t,i)=>{
+      const inp=document.getElementById(`${id}_i_${i}`);
+      const fb=document.getElementById(`${id}_f_${i}`);
+      const card=document.getElementById(`${id}_c_${i}`);
+      const val=inp.value.trim().toLowerCase();
+      total++;
+      const ok=t.a.some(ans=>val===ans.toLowerCase()||val.replace(/\s/g,'')===ans.toLowerCase().replace(/\s/g,''));
+      fb.className='hwtask-fb show '+(ok?'okfb':'badfb');
+      fb.innerHTML=ok?`✓ Correct! / सही! (${t.a[0]})`:`✗ Answer: <strong>${t.a[0]}</strong>`;
+      card.className='hwtask'+(ok?' done-task':'');
+      if(ok)correct++;
+    });
+  });
+  const bar=document.getElementById('hwScoreBar');bar.style.display='flex';
+  document.getElementById('hwScoreVal').textContent=`${correct}/${total}`;
+  const p=correct/total;
+  document.getElementById('hwScoreMsg').textContent=p>=.9?'Excellent! / उत्कृष्ट!':p>=.7?'Good! / राम्रो!':p>=.5?'Keep trying! / अझ प्रयास गर्नुस्!':'Study more / अझ पढ्नुस्।';
+}
+function resetHW(){
+  ['hw1','hw2','hw3','hw4'].forEach(id=>{
+    HWD[id].forEach((_,i)=>{
+      const inp=document.getElementById(`${id}_i_${i}`);
+      const fb=document.getElementById(`${id}_f_${i}`);
+      const card=document.getElementById(`${id}_c_${i}`);
+      if(inp)inp.value='';
+      if(fb){fb.className='hwtask-fb';fb.innerHTML='';}
+      if(card)card.className='hwtask';
+    });
+  });
+  document.getElementById('hwScoreBar').style.display='none';
+}
+buildTools();
+</script>
+</body>
+</html>
