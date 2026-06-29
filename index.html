@@ -718,9 +718,12 @@ function buildTools(){
   const g=document.getElementById('toolGrid');
   g.innerHTML=TOOLS.map((t,i)=>`<div class="tool-card" id="tc_${i}" onclick="flipCard(${i})">
     <div class="tc-front">
-      <div class="tc-img-placeholder" style="height:120px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#e8e0d0,#C4956A);">
-        <span style="font-family:'Noto Sans JP',sans-serif;font-size:2rem;font-weight:900;color:#4A2E0A;">${t.jp}</span>
-      </div>
+      ${t.img ? 
+        `<img src="${t.img}" alt="${t.jp}" class="tc-img" style="height:160px;width:100%;object-fit:cover;background:#ddd;" onerror="this.style.display='none'">` :
+        `<div class="tc-img-placeholder" style="height:160px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#e8e0d0,#C4956A);">
+          <span style="font-family:'Noto Sans JP',sans-serif;font-size:2rem;font-weight:900;color:#4A2E0A;">${t.jp}</span>
+        </div>`
+      }
       <div class="tc-body">
         <div class="tc-jp">${t.jp}</div>
         <div class="tc-roma">${t.roma}</div>
